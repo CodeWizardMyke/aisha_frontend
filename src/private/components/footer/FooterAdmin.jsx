@@ -1,8 +1,18 @@
 
+import { useContext, useEffect } from "react";
 import "./FooterAdmin.css"
 import { FaUserLock } from "react-icons/fa6";
 import { IoExitOutline } from "react-icons/io5";
+import AppContext from "../../context/AppContext";
 function FooterAdmin() {
+  const {employee} = useContext(AppContext);
+
+  useEffect(() => {
+    console.log(employee)
+    if(employee){
+      document.getElementById('employee_role').textContent = `Cargo: ${employee.employye_office}`;
+    }
+  },[employee])
 
   return (
     <footer className="adm-footer">
@@ -10,7 +20,7 @@ function FooterAdmin() {
         <div>
           <div className="employee_auth">
             <FaUserLock/>
-            <span>Cargo:</span>
+            <span id="employee_role">Cargo:</span>
           </div>
         </div>
         <div className="app_build">

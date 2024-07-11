@@ -1,59 +1,43 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import React, { useContext, useState } from 'react';
 import './EmployeeAuth.css';
-
 import aishaFetch from '../../axios/config';
 import AppContext from '../../context/AppContext';
-import Loading from '../../components/loading/Loading';
+import { useNavigate } from 'react-router-dom'
 
 function EmployeeAuth() {
-  const navigate = useNavigate();
-  const {employee, setEmployee, setToken, loading, setLoading} = useContext(AppContext)
+  const {setEmployee, setToken} = useContext(AppContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate()
 
-  useEffect(() => { setLoading(false); }, [setLoading]);
+  const localEmployee = localStorage.getItem('employee');
+  const localToken = localStorage.getItem('token');
+  if(localEmployee && localToken){
+    navigate('/manager/')
+  }
 
-  const oldEmployee = localStorage.getItem("employee");
-  const oldToken = localStorage.getItem('token')
-  if(oldEmployee && oldToken) {
-    setEmployee(oldEmployee);
-    setToken(oldToken);
-
-    navigate('/manager');
-  };
-
-  const getEmployee = async (e) => {
-    try {
-      e.preventDefault();
-      setLoading(true);
   
-      const response = await aishaFetch.post('/auth/login', {email: email,password: password,});
+  const getEmployee = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await aishaFetch.post('/auth/login', {email, password,});
 
-      localStorage.setItem('employee', JSON.stringify(response.data.user));
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('employee',  JSON.stringify(response.data.user));
+      localStorage.setItem('token', JSON.stringify(response.data.token));
 
-      setToken(response.data.token);
       setEmployee(response.data.user);
+      setToken(response.data.token);
+      navigate('/manager/')
+
     } catch (error) {
-      
-      const {data} = error.response;
-      data.map(e => (
-        document.querySelector(`.error-${e.path}`).textContent = e.msg
-      ));
-      setLoading(false);
+      console.error(error.response);
+      setError("Erro ao fazer login. Verifique suas credenciais.");
     }
   };
 
-  useEffect( ()=> {
-    if(employee) navigate('/manager')
-
-  },[employee, navigate])
-
   return (
     <div className='EmployeeAuth_content'>
-      { loading && <Loading/>}
       <form 
         className='form_employee_auth'
         onSubmit={getEmployee}
@@ -65,7 +49,6 @@ function EmployeeAuth() {
             required 
             onChange={(e) => setEmail(e.target.value)} 
           />
-          <span className='error-email'>.</span>
         </div>
         <div>
           <label htmlFor='password'>Senha:</label>
@@ -75,12 +58,14 @@ function EmployeeAuth() {
             required
             onChange={(e) => setPassword(e.target.value)} 
           />
-          <span className="error-password">.</span>
         </div>
         <button type='submit'>Entrar</button>
+        <div className="errors">
+          {error && <p className="error-message">{error}</p>}
+        </div>
       </form>
     </div>
-  )
+  );
 }
 
 export default EmployeeAuth;

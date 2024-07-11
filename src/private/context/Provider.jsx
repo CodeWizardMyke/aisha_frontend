@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import AppContext from './AppContext';
 
 
@@ -8,16 +8,14 @@ function Provider({children}) {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  if(!employee){
-    const oldData = localStorage.getItem(employee);
-    if(oldData) setEmployee(oldData);
-  }
-
-  if(!token){
-    const oldToken = localStorage.getItem(token);
-    if(oldToken) setToken(oldToken);
-  }
-  console.log(employee)
+  useEffect(()=>{
+    const localEmployee = JSON.parse(localStorage.getItem('employee'));
+    const localToken = JSON.parse(localStorage.getItem('token'));
+    if(localEmployee && localToken){
+      setEmployee(localEmployee);
+      setToken(localToken);
+    }
+  },[])
 
   const value = {
     employee,
