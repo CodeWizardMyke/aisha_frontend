@@ -1,12 +1,12 @@
 import React,{useEffect, useState} from 'react';
 import AppContext from './AppContext';
 
-
 function Provider({children}) {
 
   const [employee, setEmployee] = useState(null);
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [menuActive, setMenuActive] = useState(true);
 
   useEffect(()=>{
     const localEmployee = JSON.parse(localStorage.getItem('employee'));
@@ -24,6 +24,7 @@ function Provider({children}) {
     setToken,
     loading,
     setLoading,
+    menuActive, setMenuActive,
   }
 
   return (

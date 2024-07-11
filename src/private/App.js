@@ -8,9 +8,9 @@ import FooterAdmin from "./components/footer/FooterAdmin";
 function AppPrivate() {
   return (
       <Provider>
-      <HeaderAdmin/>
-      <Outlet />
-      <FooterAdmin/>
+        <HeaderAdmin/>
+        <Outlet />
+        <FooterAdmin/>
       </Provider>
   );
 }
