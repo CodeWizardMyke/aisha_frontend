@@ -4,7 +4,6 @@ import './AsideMenu.css';
 import { Link } from 'react-router-dom';
 import { RiMenuFold4Fill } from "react-icons/ri";
 import AppContext from '../../context/AppContext';
-import { FaLuggageCart } from "react-icons/fa";
 
 function AsideMenu() {
   const {menuActive} = useContext(AppContext)
@@ -14,7 +13,7 @@ function AsideMenu() {
         <h2>Módulos</h2>
         <ul className='nav-menu-modules'>
           <li>
-            <Link className='btn btn-mdl' to="/manager/products"> <RiMenuFold4Fill /> Produtos</Link>
+            <Link className='btn btn-mdl' to="/manager/product"> <RiMenuFold4Fill /> Produtos</Link>
           </li>
           <li>
             <Link className='btn btn-mdl' to="/manager/cart"> <RiMenuFold4Fill /> Carrinho</Link>

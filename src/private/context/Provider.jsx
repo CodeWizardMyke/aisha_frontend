@@ -7,6 +7,7 @@ function Provider({children}) {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
   const [menuActive, setMenuActive] = useState(true);
+  const [managerMenu, setManagerMenu] = useState(true);
 
   useEffect(()=>{
     const localEmployee = JSON.parse(localStorage.getItem('employee'));
@@ -25,6 +26,7 @@ function Provider({children}) {
     loading,
     setLoading,
     menuActive, setMenuActive,
+    managerMenu, setManagerMenu,
   }
 
   return (

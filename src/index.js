@@ -6,6 +6,7 @@ import AppPrivate from './private/App';
 import AppPublic from './public/App';
 import EmployeeAuth from './private/page/auth/EmployeeAuth';
 import ManagerHome from './private/page/home/Home';
+import ProductManager from './private/page/home/ProductManager';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
     element: <AppPrivate />,
     children: [
       {path:'/manager/', element: <ManagerHome />},
-      {path:'/manager/auth', element: <EmployeeAuth />}
+      {path:'/manager/auth', element: <EmployeeAuth />},
+      {path:'/manager/product', element: <ProductManager/>},
     ]
   },
   {

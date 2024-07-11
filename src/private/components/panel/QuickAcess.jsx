@@ -14,14 +14,14 @@ function QuickAcess() {
 
   return (
     <div className='QuickAcess'>
-      <span 
+      <MdOutlineDoubleArrow 
         className='btn_active_menu'
-        onClick={()=> { setMenuActive(!menuActive) }}
-      ><MdOutlineDoubleArrow/></span>
+        onClick={()=> { setMenuActive(!menuActive) }} 
+      />
       <h2>Acesso Rápido</h2>
       <ul className='QuickAcessList'>
         <li>
-          <Link className='btn-lg' to="/manager/products"><MdProductionQuantityLimits />Produtos</Link>
+          <Link className='btn-lg' to="/manager/product"><MdProductionQuantityLimits />Produtos</Link>
         </li>
         <li>
           <Link className='btn-lg' to="/manager/employee"><FaUsersGear />Funcionários</Link>

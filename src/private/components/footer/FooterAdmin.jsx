@@ -1,18 +1,32 @@
+import { useNavigate } from 'react-router-dom'
+import AppContext from "../../context/AppContext";
 
-import { useContext, useEffect } from "react";
 import "./FooterAdmin.css"
+import { useContext, useEffect } from "react";
 import { FaUserLock } from "react-icons/fa6";
 import { IoExitOutline } from "react-icons/io5";
-import AppContext from "../../context/AppContext";
+
+
 function FooterAdmin() {
-  const {employee} = useContext(AppContext);
+  const {employee,setEmployee, setToken} = useContext(AppContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(employee)
     if(employee){
-      document.getElementById('employee_role').textContent = `Cargo: ${employee.employye_office}`;
+      document.getElementById('employee_role').textContent = `Cargo: ${employee.employee_role}`;
     }
   },[employee])
+
+  const btnExit = () => {
+    if(employee){
+      localStorage.removeItem('employee');
+      localStorage.removeItem('token');
+      setEmployee(null);
+      setToken(null);
+      navigate('/manager/auth');
+    }
+  }
 
   return (
     <footer className="adm-footer">
@@ -29,7 +43,11 @@ function FooterAdmin() {
         </div>
       </div>
       <div className="footer-rigth">
-        <button type="button" className="btn-logout__employee">Sair <IoExitOutline/></button>
+        <button 
+          type="button"
+          className="btn-logout__employee"
+          onClick={btnExit}
+        >Sair <IoExitOutline/></button>
       </div>
     </footer>
   )

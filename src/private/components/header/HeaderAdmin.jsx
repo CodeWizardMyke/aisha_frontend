@@ -2,6 +2,7 @@ import React from 'react'
 import { SiNginxproxymanager } from "react-icons/si";
 import { IoSettingsOutline } from "react-icons/io5";
 import { BiMessageAltDetail } from "react-icons/bi";
+import {Link}  from 'react-router-dom'
 
 import './HeaderAdmin.css'
 
@@ -11,7 +12,9 @@ function HeaderAdmin() {
       <header className='container adm-header'>
         <div className="logo-adm">
           <SiNginxproxymanager />
-          <span>Manager.</span>
+          <Link to='/manager/'>
+            <span>Manager.</span>
+          </Link>
         </div>
         <div className="adm-tools">
           <IoSettingsOutline />
