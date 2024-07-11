@@ -1,0 +1,56 @@
+
+.adm-footer{
+  width: 100%;
+  padding: 10px;
+  background-color: var(--footer-admin-bg-color);
+  box-shadow: 0 0 15px #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem ;
+}
+.employee_auth{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+.employee_auth svg{
+  color: #616161;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+.employee_auth svg:hover{
+  color: #000000;
+}
+.employee_auth span{
+  margin-left: 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.btn-logout__employee{
+  padding: 5px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b1b1b1;
+  color: #080808;
+  border: none;
+  border-radius: 5px;
+  transition: all 300ms ease-in-out;;
+}
+.btn-logout__employee:hover{
+  background-color: #888888;
+  color: #474747;
+}
+
+.btn-logout__employee svg{
+  margin-left: 5px;
+  font-size: 2rem;
+}

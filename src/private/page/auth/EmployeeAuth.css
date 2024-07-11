@@ -1,0 +1,51 @@
+.EmployeeAuth_content{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(224, 224, 224);
+}
+
+.form_employee_auth{
+  width: 300px;
+  height: 300px;
+  background-color: rgba(105, 105, 105, 0.829);
+  border-radius: 10px;
+  box-shadow: 0 0 15px #dddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.form_employee_auth input{
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+}
+.form_employee_auth label{
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.form_employee_auth button{
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+.form_employee_auth span{
+  text-align: center;
+  width: 100%;
+  color: rgb(163, 1, 1);
+  padding: 1rem;
+}
