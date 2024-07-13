@@ -12,7 +12,6 @@ function FooterAdmin() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(employee)
     if(employee){
       document.getElementById('employee_role').textContent = `Cargo: ${employee.employee_role}`;
     }
