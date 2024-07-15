@@ -29,9 +29,6 @@ function ProductManager() {
           <li>
             <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Alterar</button>
           </li>
-          <li>
-            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Excluir</button>
-          </li>
         </ul>
       </div>
       <div className='ProductManager_service'>

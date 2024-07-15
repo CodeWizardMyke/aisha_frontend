@@ -22,14 +22,16 @@ const fetchProducts = async (page, size, setProducts, setCount, setLoading) => {
 const searchProduct = async (e, page, size, query, setProducts, setCount, setLoading) => {
   e.preventDefault();
   try {
-    const response = await aishaFetch.get('/product/search/title', {
-      headers: { size: size, page: page, title: query }
-    });
-    console.log(response);
-
-    setProducts(response.data.rows);
-    setCount(response.data.count);
-    setLoading(false);
+    if(query === ''){
+      fetchProducts(page, size, setProducts, setCount, setLoading)
+    }else{
+      const response = await aishaFetch.get('/product/search/title', {
+        headers: { size: size, page: page, title: query }
+      });
+      setProducts(response.data.rows);
+      setCount(response.data.count);
+      setLoading(false);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -41,7 +43,7 @@ function ReadProduct() {
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(1);
   const [query, setQuery] = useState('');
-  let size = 2;
+  let size = 10;
 
   useEffect(() => {
     fetchProducts(page, size, setProducts, setCount, setLoading);
