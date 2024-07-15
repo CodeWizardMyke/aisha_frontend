@@ -1,18 +1,20 @@
-.loading{
+.loading {
   font-size: 3rem;
-  margin: 200px auto 0px;
   display: flex;
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   align-items: center;
   justify-content: center;
   animation: spin 1s infinite linear;
 }
 
 @keyframes spin {
-  from{
+  from {
     transform: rotate(0deg);
   }
-  to{
+  to {
     transform: rotate(360deg);
   }
 }

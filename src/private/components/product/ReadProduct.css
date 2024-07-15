@@ -1,0 +1,116 @@
+
+.search_item{
+  height: 100px;
+  background-color: #ddd;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search_item_inputs input{
+  height: 35px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+.search_item_inputs button{
+  margin-left: 5px;
+  height: 35px;
+  width: 120px;
+  background-color: #f2f2f200;
+  border: solid 1px #ffff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition:  300ms ease all;
+}
+.search_item_inputs button:hover{
+  border: #393939 solid 1px;
+}
+
+.item_list ul{
+  background-color: #ddd;
+  padding: 10px;
+  margin-top: 15px;
+  height: 550px;
+  overflow-y: scroll;
+}
+
+.item_list li {
+  background-color:#fff;
+  padding: 5px 10px;
+  border: 1px solid #858585;
+  margin: 2px 0;
+  cursor: pointer;
+}
+
+.item_list li:hover{
+  background-color: #cccccc;
+}
+
+.item_title_id{
+  display: flex;
+  height: 25px;
+  align-items: center;
+  justify-content: start;
+}
+.item_title_id span{
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+.item_actions{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.item_actions  button{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 4px;
+  width: 100px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.item_list button svg{
+  margin-left: 5px;
+}
+
+.bt_delete{
+  color: rgb(163, 26, 26);
+}
+.bt_edit{
+  color: royalblue;
+}
+
+.pagination{
+  width: 125px;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  margin: 2px auto;
+}
+.pagination button{
+  background-color: #f2f2f200;
+  border: solid 1px #8a8a8a;
+  cursor: pointer;
+  transition:  300ms ease all;
+  padding: 5px;
+}
+.pagination button:hover{
+  background-color: #6d6d6d;
+  color: #fff;
+}
+.btn_prev{
+  border-radius:10px 0 0 10px;
+}
+.btn_page{
+  width: 35px;
+}
+.btn_next{
+  border-radius:0 10px 10px 0;
+}

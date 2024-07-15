@@ -4,11 +4,13 @@ import { MdOutlineDoubleArrow } from "react-icons/md";
 
 import './ProductManager.css'
 import AppContext from '../../context/AppContext';
+
 import CreateProduct from '../../components/product/CreateProduct';
+import ReadProduduct from '../../components/product/ReadProduduct';
 
 function ProductManager() {
   const {managerMenu, setManagerMenu} = useContext(AppContext)
-  const [createProduct, setCreateProduct] = useState(false);
+  const [ stateButton , setStateButton] = useState(false);
 
   return (
     <div className='manager_module_content'>
@@ -16,19 +18,19 @@ function ProductManager() {
         <h2>Módulo de Produtos</h2>
         <ul>
           <li>
-            <button className='btn btn-mdl' type="button" onClick={()=>{ setCreateProduct(!createProduct) }}> <RiMenuFold4Fill /> Cadastrar</button>
+            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Cadastrar</button>
           </li>
           <li>
-            <button className='btn btn-mdl' type="button"> <RiMenuFold4Fill /> Gerenciar</button>
+            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Gerenciar</button>
           </li>
           <li>
-            <button className='btn btn-mdl' type="button"> <RiMenuFold4Fill /> Visualizar</button>
+            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('read') }}> <RiMenuFold4Fill /> Visualizar</button>
           </li>
           <li>
-            <button className='btn btn-mdl' type="button"> <RiMenuFold4Fill /> Alterar</button>
+            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Alterar</button>
           </li>
           <li>
-            <button className='btn btn-mdl' type="button"> <RiMenuFold4Fill /> Excluir</button>
+            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Excluir</button>
           </li>
         </ul>
       </div>
@@ -38,7 +40,8 @@ function ProductManager() {
           onClick={()=>{ setManagerMenu(!managerMenu)}}
         />
 
-        { createProduct && <CreateProduct/>}
+        { stateButton === 'create' && <CreateProduct/>}
+        { stateButton === 'read'   && <ReadProduduct/>}
 
       </div>
     </div>

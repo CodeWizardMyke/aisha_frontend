@@ -14,8 +14,9 @@ function CreateProduct() {
       const formData = new FormData(document.getElementById('formPostProd'))
   
       const response = await aishaPost.post('/product/crud/create',formData)
-      console.log(response)
-      createdFeedback()
+
+      createdFeedback(response)
+      document.getElementById('formPostProd').reset()
     } catch (error) {
       if(error.response.data.errors[0].path === 'token'){
         alert(error.response.data.errors[0].msg)
@@ -43,7 +44,7 @@ function CreateProduct() {
    }
   }
   
-  function createdFeedback(){
+  function createdFeedback(response){
     document.querySelector('.stateCreate').style.display = 'flex'
     setTimeout(() => {
       document.querySelector('.stateCreate').style.display = 'none'
