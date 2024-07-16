@@ -1,10 +1,17 @@
 import React from 'react'
+import { useNavigate}  from 'react-router-dom'
+
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
 
 function ProductItemList({product}) {
+
+  function showMoreProduct(product){
+    console.log(product)
+  }
+
   return (
-    <li>
+    <li onClick={ () => { showMoreProduct(product)} }>
       <div className="item_info">
         <div className='item_title_id'>
           <span>{`ID: ${product.product_id} ,`}</span>

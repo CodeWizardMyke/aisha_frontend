@@ -1,41 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './ReadProduct.css';
 
-import aishaFetch from '../../axios/config';
 import Loading from '../loading/Loading';
 import ProductItemList from './ProductItemList';
-
-const fetchProducts = async (page, size, setProducts, setCount, setLoading) => {
-  try {
-    const response = await aishaFetch.get('/product/crud/read', {
-      headers: { size: size, page: page }
-    });
-
-    setProducts(response.data.rows);
-    setCount(response.data.count);
-    setLoading(false);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const searchProduct = async (e, page, size, query, setProducts, setCount, setLoading) => {
-  e.preventDefault();
-  try {
-    if(query === ''){
-      fetchProducts(page, size, setProducts, setCount, setLoading)
-    }else{
-      const response = await aishaFetch.get('/product/search/title', {
-        headers: { size: size, page: page, title: query }
-      });
-      setProducts(response.data.rows);
-      setCount(response.data.count);
-      setLoading(false);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+import fetchProducts from '../../utils/fetchProducts';
 
 function ReadProduct() {
   const [products, setProducts] = useState([]);
@@ -46,28 +14,24 @@ function ReadProduct() {
   let size = 10;
 
   useEffect(() => {
-    fetchProducts(page, size, setProducts, setCount, setLoading);
-  }, [page, size]);
+    fetchProducts(page, size, query)
+      .then( response => {
+        setProducts(response.data.rows);
+        setCount(response.data.count);
+        setLoading(false);
+      })
+      .catch( error => console.log(error));
+  }, [page, size, query]);
 
-  function paginatePrev() {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  }
-
-  function paginateNext() {
-    if (page < count / size) {
-      setProducts([])
-      setPage(page + 1);
-    }
-  }
+  function paginatePrev() { if (page > 1) {setPage(page - 1);}}
+  function paginateNext() { if (page < count / size) {setPage(page + 1);}}
 
   return (
     <div className='content_crud'>
       <div className="search_item">
         <h2>Pesquisar Produtos</h2>
         <div className='search_item_inputs'>
-          <form onSubmit={(e) => searchProduct(e, page, size, query, setProducts, setCount, setLoading)}>
+          <form onSubmit={(e) => {e.preventDefault()}}>
             <input
               type="text"
               placeholder="Pesquisar produto"
