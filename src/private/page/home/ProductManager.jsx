@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 import { RiMenuFold4Fill } from "react-icons/ri";
 import { MdOutlineDoubleArrow } from "react-icons/md";
 
@@ -7,8 +8,16 @@ import AppContext from '../../context/AppContext';
 
 import CreateProduct from '../../components/product/CreateProduct';
 import ReadProduduct from '../../components/product/ReadProduduct';
+import verifyAuthUser from '../../utils/verifyAuthUser';
 
 function ProductManager() {
+  const navigate = useNavigate()
+  const userAtuh = verifyAuthUser()
+  
+  if (!userAtuh) {
+    navigate('/manager/auth')
+  }
+
   const {managerMenu, setManagerMenu} = useContext(AppContext)
   const [ stateButton , setStateButton] = useState(false);
 

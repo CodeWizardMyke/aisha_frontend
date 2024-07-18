@@ -3,7 +3,7 @@ import './ReadProduct.css';
 
 import Loading from '../loading/Loading';
 import ProductItemList from './ProductItemList';
-import fetchProducts from '../../utils/fetchProducts';
+import aishaFetch from '../../axios/config';
 
 function ReadProduct() {
   const [products, setProducts] = useState([]);
@@ -11,17 +11,21 @@ function ReadProduct() {
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(1);
   const [query, setQuery] = useState('');
+  const [itemUpdated, setItemsUpdated] = useState(false)
+
   let size = 10;
 
   useEffect(() => {
-    fetchProducts(page, size, query)
-      .then( response => {
+      aishaFetch.get(`/product/${ query === '' ? 'crud/read' : 'search/title'}`,{
+        headers: {'Content-Type': 'application/json',size: size, page: page, title: query}
+      })
+      .then( response => { 
         setProducts(response.data.rows);
         setCount(response.data.count);
         setLoading(false);
       })
-      .catch( error => console.log(error));
-  }, [page, size, query]);
+      .catch( error => console.log(error))
+  }, [page, size, query, itemUpdated]);
 
   function paginatePrev() { if (page > 1) {setPage(page - 1);}}
   function paginateNext() { if (page < count / size) {setPage(page + 1);}}
@@ -48,7 +52,7 @@ function ReadProduct() {
             <Loading />
           ) : (
             products.map((product) => (
-              <ProductItemList key={product.product_id} product={product} />
+              <ProductItemList key={product.product_id} product={product} setItemsUpdated={setItemsUpdated} />
             ))
           )}
         </ul>

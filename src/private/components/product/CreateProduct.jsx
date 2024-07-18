@@ -1,7 +1,7 @@
 import { useNavigate} from 'react-router-dom'
 
 import './CreateProduct.css'
-import aishaPost from '../../axios/aishaPost'
+import aishaFetch from '../../axios/config'
 
 function CreateProduct() {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ function CreateProduct() {
       updateErrorsSpan()
       const formData = new FormData(document.getElementById('formPostProd'))
   
-      const response = await aishaPost.post('/product/crud/create',formData)
+      const response = await aishaFetch.post('/product/crud/create',formData,{headers:{'Content-Type':'multipart/form-data'}})
 
       createdFeedback(response)
       document.getElementById('formPostProd').reset()
