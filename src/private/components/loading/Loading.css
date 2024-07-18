@@ -1,13 +1,14 @@
 .loading {
   font-size: 3rem;
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   align-items: center;
   justify-content: center;
   animation: spin 1s infinite linear;
+  z-index: 100;
 }
 
 @keyframes spin {

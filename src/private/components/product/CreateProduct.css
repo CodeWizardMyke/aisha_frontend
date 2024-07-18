@@ -4,6 +4,7 @@
   flex-direction: column;
   flex-shrink: 1;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .FormCreateProduct{

@@ -30,13 +30,7 @@ function ProductManager() {
             <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Cadastrar</button>
           </li>
           <li>
-            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Gerenciar</button>
-          </li>
-          <li>
-            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('read') }}> <RiMenuFold4Fill /> Visualizar</button>
-          </li>
-          <li>
-            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Alterar</button>
+            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('read') }}> <RiMenuFold4Fill /> Gerenciar</button>
           </li>
         </ul>
       </div>

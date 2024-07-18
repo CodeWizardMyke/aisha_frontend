@@ -47,14 +47,16 @@ function ReadProduct() {
         </div>
       </div>
       <div className="item_list">
+        {loading ? <Loading/> : ''} 
         <ul>
-          {loading ? (
-            <Loading />
-          ) : (
+          {products.length > 0 ? (
             products.map((product) => (
-              <ProductItemList key={product.product_id} product={product} setItemsUpdated={setItemsUpdated} />
+              <ProductItemList key={product.product_id} product={product} setItemsUpdated={setItemsUpdated} setLoading={setLoading} />
             ))
-          )}
+          ) : (
+            <Loading/>
+          )
+        }
         </ul>
         <div>
           <div className='pagination'>

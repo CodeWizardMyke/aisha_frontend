@@ -1,23 +1,28 @@
 import { useNavigate} from 'react-router-dom'
+import { useState } from 'react'
 
 import './CreateProduct.css'
 import aishaFetch from '../../axios/config'
+import Loading from '../loading/Loading'
 
 function CreateProduct() {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
   let errors = []
 
   const handleSubmit =  async (e) => {
     try {
+      setLoading(true)
       e.preventDefault()
       updateErrorsSpan()
       const formData = new FormData(document.getElementById('formPostProd'))
   
       const response = await aishaFetch.post('/product/crud/create',formData,{headers:{'Content-Type':'multipart/form-data'}})
-
+      setLoading(false)
       createdFeedback(response)
       document.getElementById('formPostProd').reset()
     } catch (error) {
+      setLoading(false)
       if(error.response.data.errors[0].path === 'token'){
         alert(error.response.data.errors[0].msg)
 
@@ -45,14 +50,21 @@ function CreateProduct() {
   }
   
   function createdFeedback(response){
+    resetForm()
     document.querySelector('.stateCreate').style.display = 'flex'
     setTimeout(() => {
       document.querySelector('.stateCreate').style.display = 'none'
     }, 2000)
   }
 
+  function resetForm(e) {
+    e.preventDefault();
+    e.target.closest('form').reset();
+  }
+
   return (
     <div className='CreateProduct'>
+        {loading ? <Loading/> : ''}
         <div className='title__createProduct'>
           <h2>Cadastrar um novo produto </h2>
           <span className="stateCreate">Produto criado com sucesso!</span>
@@ -209,7 +221,7 @@ function CreateProduct() {
             <div className="error errors-promotions"></div>
           </div>
           <div className='button_content'>
-            <button type="button"  className="reset-button">Limpar</button>
+            <button type="button"  className="reset-button" onClick={resetForm}>Limpar</button>
             <button type="submit" className="submit-button">Enviar</button>
           </div>
         </form>

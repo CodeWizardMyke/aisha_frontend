@@ -2,12 +2,12 @@ import './UpdateProduct.css'
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import aishaFetch from '../../axios/config';
 
-function UpdateProduct({product, onClose, setItemsUpdated}) {
+function UpdateProduct({product, onClose, setLoading, setItemsUpdated}) {
   const url = aishaFetch.defaults.baseURL.slice(0, -4)
 
   function uploadProduct(e){
     e.preventDefault();
-
+    setLoading(true);
     const formDate = new FormData(e.target);
     const headers = {
       "Content-Type": "multipart/form-data",
@@ -16,9 +16,13 @@ function UpdateProduct({product, onClose, setItemsUpdated}) {
 
     aishaFetch.put('/product/crud/update',formDate,{headers:headers})
     .then(response => {
+      setLoading(false);
       createdFeedback(response)
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      setLoading(false);
+      console.log(error)
+    });
   }
 
   function createdFeedback(response){
@@ -31,6 +35,11 @@ function UpdateProduct({product, onClose, setItemsUpdated}) {
         onClose(true)
       }, 2000)
     };
+  }
+
+  function resetForm(e) {
+    e.preventDefault();
+    e.target.closest('form').reset();
   }
 
   return (
@@ -195,7 +204,7 @@ function UpdateProduct({product, onClose, setItemsUpdated}) {
             <div className="error errors-promotions"></div>
           </div>
           <div className='button_content'>
-            <button type="button"  className="reset-button">Limpar</button>
+            <button type="button"  className="reset-button" onClick={resetForm}>Limpar</button>
             <button type="submit" className="submit-button">Enviar</button>
           </div>
         </form>
