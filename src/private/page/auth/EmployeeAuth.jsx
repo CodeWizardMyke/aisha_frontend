@@ -1,22 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './EmployeeAuth.css';
 import aishaFetch from '../../axios/config';
 import AppContext from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom'
 
 function EmployeeAuth() {
+  const localEmployee = localStorage.getItem('employee');
+  const localToken = localStorage.getItem('token');
+
   const {setEmployee, setToken} = useContext(AppContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate()
 
-  const localEmployee = localStorage.getItem('employee');
-  const localToken = localStorage.getItem('token');
-  if(localEmployee && localToken){
-    navigate('/manager/')
-  }
-
+  
+  useEffect(() => {
+    if(localEmployee && localToken){
+      navigate('/manager/')
+    }
+  }, [localEmployee, localToken, navigate]);
   
   const getEmployee = async (event) => {
     event.preventDefault();
