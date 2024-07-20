@@ -7,6 +7,8 @@ import AppPublic from './public/App';
 import EmployeeAuth from './private/page/auth/EmployeeAuth';
 import ManagerHome from './private/page/home/Home';
 import ProductManager from './private/page/home/ProductManager';
+import EmployeeManager from './private/page/home/EmployeeManager';
+import CartManager from './private/page/home/CartManager';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,8 @@ const router = createBrowserRouter([
       {path:'/manager/', element: <ManagerHome />},
       {path:'/manager/auth', element: <EmployeeAuth />},
       {path:'/manager/product', element: <ProductManager/>},
+      {path:'/manager/employee', element: <EmployeeManager/>},
+      {path:'/manager/cart', element: <CartManager/>},
     ]
   },
   {
@@ -28,7 +32,5 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 );
