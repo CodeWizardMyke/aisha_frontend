@@ -6,34 +6,39 @@ import aishaFetch from '../../axios/config';
 
 function CreateEmployee() {
   const [loading, setLoading] = useState(false)
-  let errors = []
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit =  async (e) => {
     try {
-      setLoading(true)
-      e.preventDefault()
-      updateErrorsSpan()
-      const formData = new FormData(document.getElementById('myForm'))
+      setLoading(true);
+      e.preventDefault();
+      updateErrorsSpan();
+      const formData = new FormData(document.getElementById('myForm'));
   
-      const response = await aishaFetch.post('/employee/crud/create',formData)
-      createdFeedback(response)
+      const response = await aishaFetch.post('/employee/crud/create',formData);
+      createdFeedback(response);
+      setLoading(false);
+      document.getElementById('myForm').reset();
+
     } catch (error) {
-      const {data} = error.response ?  error.response : { data:undefined }
-      if(data){ handdlerErrorsPost(data) }
+
+      setLoading(false);
+      const {data} = error.response ?  error.response : { data:undefined };
+      if(data){ handdlerErrorsPost(data) };
     }
   }
 
   function handdlerErrorsPost(data){
-    errors = data.errors
+    setErrors(data.errors)
     if(errors.length > 0) {
       data.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg )
     }
-    
   }
   function updateErrorsSpan(){
    if(errors.length > 0){
     errors.map( (e) =>  document.querySelector(`.errors-${e.path}`).innerHTML = '' )
    }
+   setErrors([])
   }
   
   function createdFeedback(response){

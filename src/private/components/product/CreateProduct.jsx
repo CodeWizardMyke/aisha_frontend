@@ -1,4 +1,3 @@
-import { useNavigate} from 'react-router-dom'
 import { useState } from 'react'
 
 import './CreateProduct.css'
@@ -6,56 +5,49 @@ import aishaFetch from '../../axios/config'
 import Loading from '../loading/Loading'
 
 function CreateProduct() {
-  const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
-  let errors = []
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit =  async (e) => {
+    e.preventDefault();
     try {
-      setLoading(true)
-      e.preventDefault()
-      updateErrorsSpan()
-      const formData = new FormData(document.getElementById('formPostProd'))
+      setLoading(true);
+      updateErrorsSpan();
+      const formData = new FormData(document.getElementById('formPostProd'));
   
-      const response = await aishaFetch.post('/product/crud/create',formData,{headers:{'Content-Type':'multipart/form-data'}})
+      const response = await aishaFetch.post('/product/crud/create',formData,{headers:{'Content-Type':'multipart/form-data'}});
       setLoading(false)
-      createdFeedback(response)
-      document.getElementById('formPostProd').reset()
-    } catch (error) {
-      setLoading(false)
-      if(error.response.data.errors[0].path === 'token'){
-        alert(error.response.data.errors[0].msg)
+      createdFeedback(response);
 
-        localStorage.removeItem('token')
-        localStorage.removeItem('employee')
-        
-        navigate('/manager/auth')
-      }else{
-        handdlerErrorsPost(error.response.data)
-      }
+    } catch (error) {
+      setLoading(false);
+
+      const {data} = error.response ?  error.response : { data:undefined };
+
+      if(data){ handdlerErrorsPost(data) };
     }
-  }
+  };
 
   function handdlerErrorsPost(data){
-    errors = data.errors
+    setErrors(data.errors);
+
     if(errors.length > 0) {
-      data.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg )
-    }
-    
-  }
+      data.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg );
+    };
+  };
   function updateErrorsSpan(){
    if(errors.length > 0){
-    errors.map( (e) =>  document.querySelector(`.errors-${e.path}`).innerHTML = '' )
-   }
-  }
+    errors.map( (e) =>  document.querySelector(`.errors-${e.path}`).innerHTML = '' );
+   };
+   setErrors([])
+  };
   
   function createdFeedback(response){
-    resetForm()
-    document.querySelector('.stateCreate').style.display = 'flex'
+    document.querySelector('.stateCreate').style.display = 'flex';
     setTimeout(() => {
-      document.querySelector('.stateCreate').style.display = 'none'
-    }, 2000)
-  }
+      document.querySelector('.stateCreate').style.display = 'none';
+    }, 2000);
+  };
 
   function resetForm(e) {
     e.preventDefault();
