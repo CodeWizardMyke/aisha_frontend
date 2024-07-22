@@ -7,6 +7,7 @@ import { RiMenuFold4Fill } from "react-icons/ri";
 
 import AppContext from '../../context/AppContext';
 import CreateEmployee from '../../components/employee/CreateEmployee';
+import ReadEmployee from '../../components/employee/ReadEmployee';
 
 function EmployeeManager() {
   const {managerMenu, setManagerMenu} = useContext(AppContext)
@@ -32,7 +33,7 @@ function EmployeeManager() {
         />
 
         { stateButton === 'create' && <CreateEmployee/>}
-        { stateButton === 'read'   && '<ReadEmployee/>'}
+        { stateButton === 'read'   && <ReadEmployee/>}
 
       </div>
     </div>
