@@ -6,7 +6,6 @@ function Provider({children}) {
   const [employee, setEmployee] = useState(null);
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [menuActive, setMenuActive] = useState(true);
   const [managerMenu, setManagerMenu] = useState(true);
 
   useEffect(()=>{
@@ -25,7 +24,6 @@ function Provider({children}) {
     setToken,
     loading,
     setLoading,
-    menuActive, setMenuActive,
     managerMenu, setManagerMenu,
   }
 

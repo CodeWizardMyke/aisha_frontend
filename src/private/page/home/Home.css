@@ -1,10 +1,5 @@
-.content{
-  min-height: 80vh;
-}
-
 .HomePage	{
   background-color: #ddd;
-  padding: 5px;
   display: flex;
   justify-content: space-between;
   width: 100%;

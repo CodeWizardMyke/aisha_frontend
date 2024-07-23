@@ -1,17 +1,17 @@
 import React, { useContext } from 'react'
 
-import './AsideMenu.css';
 import { Link } from 'react-router-dom';
 import { RiMenuFold4Fill } from "react-icons/ri";
 import AppContext from '../../context/AppContext';
 
 function AsideMenu() {
-  const {menuActive} = useContext(AppContext)
+  const {managerMenu} = useContext(AppContext)
+
   return (
-    <div>
-        <div className={`AsideMenu ${menuActive ? 'AsideAcitve' : ''}`} >
+    <div className='manager_module_content'>
+        <div  className={`side_menu ${managerMenu ? 'side_menu-active' : ''}`} >
         <h2>Módulos</h2>
-        <ul className='nav-menu-modules'>
+        <ul>
           <li>
             <Link className='btn btn-mdl' to="/manager/product"> <RiMenuFold4Fill /> Produtos</Link>
           </li>

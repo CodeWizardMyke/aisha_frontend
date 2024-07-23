@@ -1,9 +1,9 @@
 .QuickAcess{
   background-color: aliceblue;
   width: 100%;
-  margin-left: 5px;
   padding: 10px;
   position: relative;
+  margin: 5px;
 }
 
 .btn_active_menu{

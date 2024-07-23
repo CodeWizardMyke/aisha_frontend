@@ -10,13 +10,13 @@ import { FaLuggageCart } from "react-icons/fa";
 
 
 function QuickAcess() {
-  const { menuActive, setMenuActive} = useContext(AppContext)
+  const { managerMenu, setManagerMenu } = useContext(AppContext)
 
   return (
     <div className='QuickAcess'>
       <MdOutlineDoubleArrow 
         className='btn_active_menu'
-        onClick={()=> { setMenuActive(!menuActive) }} 
+        onClick={()=> { setManagerMenu(!managerMenu) }} 
       />
       <h2>Acesso Rápido</h2>
       <ul className='QuickAcessList'>

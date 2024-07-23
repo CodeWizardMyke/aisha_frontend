@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react'
 
-import './EmployeeManager.css'
-
 import { MdOutlineDoubleArrow } from "react-icons/md";
 import { RiMenuFold4Fill } from "react-icons/ri";
 
