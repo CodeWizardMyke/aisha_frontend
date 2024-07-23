@@ -11,7 +11,7 @@ function ReadEmployee() {
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(1);
   const [query, setQuery] = useState('');
-  const [itemUpdated, setItemsUpdated] = useState(false)
+ // const [itemUpdated, setItemsUpdated] = useState(false)
 
   let size = 10;
 
@@ -22,11 +22,10 @@ function ReadEmployee() {
       .then( response => { 
         setEmployee(response.data.rows);
         setCount(response.data.count);
-        console.log(response)
         setLoading(false);
       })
       .catch( error => console.log(error))
-  }, [page, size, query, itemUpdated]);
+  }, [page, size, query]);
 
   function paginatePrev() { if (page > 1) {setPage(page - 1);}}
   function paginateNext() { if (page < count / size) {setPage(page + 1);}}
@@ -52,7 +51,7 @@ function ReadEmployee() {
         <ul>
           {employee.length > 0 ? (
             employee.map((element) => (
-                <ItemListEmployee key={element.employee_id+element.email} employee={element} setItemsUpdated={setItemsUpdated} setLoading={setLoading} />
+                <ItemListEmployee key={element.employee_id+element.email} employee={element} setLoading={setLoading} />
             ))
           ) : ""
         }

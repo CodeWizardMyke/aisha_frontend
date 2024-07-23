@@ -4,8 +4,9 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
 
 import aishaFetch from '../../axios/config';
+import UpdateEmployee from './UpdateEmployee';
 
-function ItemListEmployee({employee,setItemsUpdated, setLoading}) {
+function ItemListEmployee({employee, setItemsUpdated, setLoading}) {
   const [showMore, setShowMore] = useState(false)
 
   const handleShowForm = (employee) => {
@@ -30,8 +31,8 @@ function ItemListEmployee({employee,setItemsUpdated, setLoading}) {
       console.log(error) 
     })
   }
+  
   console.log(employee)
-
   return (
     <>
       <li>
@@ -47,7 +48,7 @@ function ItemListEmployee({employee,setItemsUpdated, setLoading}) {
           <button type="button" className='bt_edit'  onClick={ handleShowForm } >Editar <CiEdit /> </button>
         </div>
       </li>
-      { showMore && '<UpdateProduct product={product} setLoading={setLoading}  onClose={handleCloseForm} setItemsUpdated={setItemsUpdated} />'}
+      { showMore && <UpdateEmployee employee={employee} setLoading={setLoading}  onClose={handleCloseForm} />}
     </>
     
   )
