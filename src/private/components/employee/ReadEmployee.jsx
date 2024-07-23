@@ -54,9 +54,7 @@ function ReadEmployee() {
             employee.map((element) => (
                 <ItemListEmployee key={element.employee_id+element.email} employee={element} setItemsUpdated={setItemsUpdated} setLoading={setLoading} />
             ))
-          ) : (
-            <Loading/>
-          )
+          ) : ""
         }
         </ul>
         <div>

@@ -53,9 +53,7 @@ function ReadProduct() {
             products.map((product) => (
               <ProductItemList key={product.product_id} product={product} setItemsUpdated={setItemsUpdated} setLoading={setLoading} />
             ))
-          ) : (
-            <Loading/>
-          )
+          ) : ''
         }
         </ul>
         <div>
