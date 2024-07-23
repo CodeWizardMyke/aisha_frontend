@@ -30,9 +30,7 @@ function CreateEmployee() {
 
   function handdlerErrorsPost(data){
     setErrors(data.errors)
-    if(errors.length > 0) {
-      data.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg )
-    }
+    data.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg )
   }
   function updateErrorsSpan(){
    if(errors.length > 0){

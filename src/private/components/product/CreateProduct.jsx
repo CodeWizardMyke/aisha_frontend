@@ -21,19 +21,14 @@ function CreateProduct() {
 
     } catch (error) {
       setLoading(false);
-
       const {data} = error.response ?  error.response : { data:undefined };
-
       if(data){ handdlerErrorsPost(data) };
     }
   };
 
   function handdlerErrorsPost(data){
     setErrors(data.errors);
-
-    if(errors.length > 0) {
-      data.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg );
-    };
+    data.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg );
   };
   function updateErrorsSpan(){
    if(errors.length > 0){
