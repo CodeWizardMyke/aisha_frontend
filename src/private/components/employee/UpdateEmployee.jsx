@@ -1,9 +1,10 @@
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import aishaFetch from '../../axios/config';
 import { useState } from "react";
+import Loading from "../loading/Loading";
 
-function UpdateEmployee({employee, onClose, setLoading, setItemsUpdated}) {
-
+function UpdateEmployee({employee, onClose, setItemsUpdated}) {
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const updateItem =  async (e) => {
@@ -13,14 +14,11 @@ function UpdateEmployee({employee, onClose, setLoading, setItemsUpdated}) {
       updateErrorsSpan();
       const formData = new FormData(e.target);
   
-      const response = await aishaFetch.put('/employee/crud/update',formData,{headers: {employee_id: employee.employee_id} });
-      setLoading(false)
-      createdFeedback(response);
-      console.log(response);
+      await aishaFetch.put('/employee/crud/update',formData,{headers: {employee_id: employee.employee_id} });
+      createdFeedback();
 
     } catch (error) {
       setLoading(false);
-      console.log(error)
 
       const {data} = error.response ?  error.response : { data:undefined };
 
@@ -30,10 +28,7 @@ function UpdateEmployee({employee, onClose, setLoading, setItemsUpdated}) {
 
   function handdlerErrorsPost(data){
     setErrors(data.errors);
-
-    if(errors.length > 0) {
-      data.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg );
-    };
+    data.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg );
   };
   function updateErrorsSpan(){
    if(errors.length > 0){
@@ -42,8 +37,10 @@ function UpdateEmployee({employee, onClose, setLoading, setItemsUpdated}) {
    setErrors([])
   };
   
-  function createdFeedback(response){
-   // setItemsUpdated(true);
+  function createdFeedback(){
+    setItemsUpdated(true);
+    setLoading(false)
+
     let spanMsg = document.querySelector('.stateCreate');
     if(spanMsg){
       spanMsg.style.display = 'flex'
@@ -67,6 +64,7 @@ function UpdateEmployee({employee, onClose, setLoading, setItemsUpdated}) {
           <button type="button" onClick={onClose} className='close_button'>close <IoMdCloseCircleOutline/> </button>
         </div>
         <form onSubmit={updateItem}>
+          {loading ? <Loading/> : ''}
           <div className="form-group w-30">
             <label htmlFor="name">Nome completo:</label>
             <input type="text" id="name" name="name"  placeholder={employee.name} />

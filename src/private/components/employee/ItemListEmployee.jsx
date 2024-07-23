@@ -5,9 +5,11 @@ import { CiEdit } from "react-icons/ci";
 
 import aishaFetch from '../../axios/config';
 import UpdateEmployee from './UpdateEmployee';
+import Loading from '../loading/Loading';
 
-function ItemListEmployee({employee, setItemsUpdated, setLoading}) {
+function ItemListEmployee({employee, setItemsUpdated}) {
   const [showMore, setShowMore] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleShowForm = (employee) => {
     setShowMore(true);
@@ -36,6 +38,7 @@ function ItemListEmployee({employee, setItemsUpdated, setLoading}) {
   return (
     <>
       <li>
+        {loading ? <Loading/> : ''}
         <div className="item_info">
           <div className='item_title_id'>
             <span>{`Nome: ${employee.name} | `}</span>
@@ -48,7 +51,7 @@ function ItemListEmployee({employee, setItemsUpdated, setLoading}) {
           <button type="button" className='bt_edit'  onClick={ handleShowForm } >Editar <CiEdit /> </button>
         </div>
       </li>
-      { showMore && <UpdateEmployee employee={employee} setLoading={setLoading}  onClose={handleCloseForm} />}
+      { showMore && <UpdateEmployee employee={employee} onClose={handleCloseForm} setItemsUpdated={setItemsUpdated} /> }
     </>
     
   )
