@@ -6,6 +6,7 @@ import { MdOutlineDoubleArrow } from "react-icons/md";
 import { RiMenuFold4Fill } from "react-icons/ri";
 
 import AppContext from '../../context/AppContext';
+import CreateCart from '../../components/cart/CreateCart';
 
 function CartManager() {
   const {managerMenu, setManagerMenu} = useContext(AppContext)
@@ -17,7 +18,7 @@ function CartManager() {
         <h2>Módulo de Carrinho</h2>
         <ul>
           <li>
-            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill /> Cadastrar</button>
+            <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('create') }}> <RiMenuFold4Fill />Novo carrinho</button>
           </li>
           <li>
             <button className='btn btn-mdl' type="button" onClick={()=>{ setStateButton('read') }}> <RiMenuFold4Fill /> Gerenciar</button>
@@ -30,7 +31,7 @@ function CartManager() {
           onClick={()=>{ setManagerMenu(!managerMenu)}}
         />
 
-        { stateButton === 'create' && '<CreateCart/>'}
+        { stateButton === 'create' && <CreateCart/>}
         { stateButton === 'read'   && '<ReadCart/>'}
 
       </div>
