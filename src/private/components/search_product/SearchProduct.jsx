@@ -5,7 +5,7 @@ import aishaFetch from '../../axios/config';
 import Loading from '../loading/Loading';
 import ProductItem from './ProductItem';
 
-function SearchProduct() {
+function SearchProduct({setCartItems,cartItems}) {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
@@ -51,7 +51,7 @@ function SearchProduct() {
         {products.length > 0 ? (
             products.map((product) => (
               <li key={product.product_id} >
-                <ProductItem product={product} />
+                <ProductItem product={product} setCartItems={setCartItems} cartItems={cartItems} />
               </li>
             ))
           ) : ''

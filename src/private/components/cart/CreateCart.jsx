@@ -2,23 +2,26 @@ import React, { useState } from 'react'
 import { FaCartPlus } from "react-icons/fa";
 import './CreateCart.css'
 
-
-import Loading from '../loading/Loading';
 import SearchProduct from '../search_product/SearchProduct';
+import WindowCart from './WindowCart';
 
 
 function CreateCart() {
-  const [loading, setLoading] = useState(false)
-
+  const [cartItems, setCartItems] = useState([]);
+  const [showCart, setShowCart] = useState(false)
 
   return (
     <div className='box-p10'>
-      {loading ? <Loading/> : ''}
       <div className='df-left'>
-        <button type='button' className='showCartItems'> Mostrar itens <FaCartPlus/></button>
+        <button 
+          type='button'
+          className='showCartItems'
+          onClick={()=> setShowCart(true) }
+        >Mostrar itens <FaCartPlus/></button>
       </div>
+      {showCart && <WindowCart setShowCart={setShowCart} products={cartItems}/>}
       <div>
-       <SearchProduct/>
+       <SearchProduct setCartItems={setCartItems}  cartItems={cartItems}/>
       </div>
     </div>
   )

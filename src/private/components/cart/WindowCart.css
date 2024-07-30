@@ -1,0 +1,56 @@
+.content_window__box{
+  position: relative;
+}
+.window__box{
+  position: absolute;
+  top: 0; right: 0;
+  height: 100%; min-height: 730px;
+  width: 100%; min-width: 500px;
+  background-color: #fff;
+  border: 1px solid black;
+}
+.window_header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+}
+.window_title{
+  margin-left: 10px;
+}
+.window_tools{
+  display: flex;
+  padding:  10px;
+  align-items: center;
+  justify-content: center;
+}
+.window_tools button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  height: 25px;
+  width: 75px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #f85959;
+  transition: all 200ms;
+}
+.window_tools button svg{
+  margin-left: 5px;
+  font-size: 1rem;
+}
+.window_tools .window_close{
+  color:#fff;
+}
+.window_tools .window_close:hover{
+  background-color: #ff3636;
+}
+.window__body{
+  padding: 10px;
+  overflow-y: scroll;
+  height: 90%;
+  margin-top: 10px;
+}
