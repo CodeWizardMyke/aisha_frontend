@@ -19,7 +19,7 @@ function CreateCart() {
           onClick={()=> setShowCart(true) }
         >Mostrar itens <FaCartPlus/></button>
       </div>
-      {showCart && <WindowCart setShowCart={setShowCart} products={cartItems}/>}
+      {showCart && <WindowCart setShowCart={setShowCart} cartItems={cartItems} setCartItems={setCartItems}/>}
       <div>
        <SearchProduct setCartItems={setCartItems}  cartItems={cartItems}/>
       </div>

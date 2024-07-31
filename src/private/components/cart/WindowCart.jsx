@@ -3,8 +3,8 @@ import './WindowCart.css'
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import ItemsCart from './ItemsCart';
 
-function WindowCart({products,setShowCart}) {
-  console.log(products)
+function WindowCart({cartItems,setShowCart, setCartItems}) {
+
   return (
     <div className="content_window__box">
       <div className='window__box'>
@@ -20,7 +20,7 @@ function WindowCart({products,setShowCart}) {
         </div>
         <div className="window__body">
           {
-            products.map(product => <ItemsCart key={Math.random()} data={product} />)
+            cartItems.map( (item, index) => <ItemsCart key={index}  index={index} data={item} cartItems={cartItems}  setCartItems={setCartItems} />  )
           }
         </div>
       </div>
