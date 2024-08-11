@@ -31,7 +31,7 @@ function ItemsCart({cartItems,setCartItems,index, data}) {
       </div>
       <div className='items_cart_footer'>
         <div className="cart_items_resume">
-          <span>Soma dos items: {data.price * data.qtd_product} R$</span>
+          <span>Soma dos items: {data.price * data.qtd_products} R$</span>
         </div>
         <div className="items_cart_tools">
           <button 

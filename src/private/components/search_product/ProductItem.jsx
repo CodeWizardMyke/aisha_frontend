@@ -10,7 +10,7 @@ function ProductItem({product,setCartItems,cartItems}) {
     category:product.category,
     price:product.price,
     stock:product.stock,
-    qtd_product: qtd
+    qtd_products: qtd
   }
 
   function handdlerAddCart (){
