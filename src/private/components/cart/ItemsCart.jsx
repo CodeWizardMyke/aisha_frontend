@@ -27,7 +27,7 @@ function ItemsCart({cartItems,setCartItems,index, data}) {
         <span className='title'>Titulo:{data.title.slice(0,100)}</span>
         <span>Marca: {data.brand} </span>
         <span>preço: {data.price} R$ </span>
-        <span>qtd: {data.qtd_product}</span>
+        <span>qtd: {data.qtd_products}</span>
       </div>
       <div className='items_cart_footer'>
         <div className="cart_items_resume">
