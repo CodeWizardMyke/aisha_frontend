@@ -6,7 +6,7 @@ const aishaFetch = axios.create({
   baseURL:'http://localhost:1515/api',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token ? token.replace(/"/g, '') : ''}`,
+    'Authorization': `Bearer ${JSON.parse(token)}`,
   },
 })
 

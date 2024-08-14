@@ -21,7 +21,6 @@ function CreateEmployee() {
       document.getElementById('myForm').reset();
 
     } catch (error) {
-
       setLoading(false);
       const {data} = error.response ?  error.response : { data:undefined };
       if(data){ handdlerErrorsPost(data) };
@@ -69,13 +68,13 @@ function CreateEmployee() {
         </div>
 
         <div className="form-group w-15">
-          <label htmlFor="employee_role">Cargo:</label>
-          <select  className='custom-select' name="employee_role" id="employee_role">
+          <label htmlFor="role">Cargo:</label>
+          <select  className='custom-select' name="role" id="role">
             <option value="admin">Administrador</option>
             <option value="manager">Gerente</option>
             <option value="employee">Funcionário</option>
           </select>
-          <div className="error errors-employee_role"></div>
+          <div className="error errors-role"></div>
         </div>
 
         <div className="form-group w-30">

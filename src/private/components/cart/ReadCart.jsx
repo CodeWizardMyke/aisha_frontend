@@ -22,13 +22,14 @@ function ReadCart() {
   },[page])
 
   function getClients (){
-    aishaFetch.get('/client/search/instagram',{
+    aishaFetch.get(`/client/search/${clientInstagram ? 'instagram' : ''}`,{
       headers:{
         page:page,size:size,
         instagram:clientInstagram
       }
     })
     .then( (response) => {
+      console.log(response)
       setData(response.data.rows)
       setCount(response.data.count)
     })
