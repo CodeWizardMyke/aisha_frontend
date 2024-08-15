@@ -2,18 +2,17 @@ import React, { useEffect, useState } from 'react'
 
 import './CartDetails.css'
 import aishaFetch from '../../../axios/config'
+import ProductTable from './ProductTable'
 
 function CartDetails({data}) {
   const [products, setProducts] = useState([])
 
-  function fetchProductsInCart (){
-    aishaFetch.get('/cart_item/crud/read',{headers:{ cart_id: data.cart_id }})
-    .then( response => console.log(response.data.rows))
-    .catch( err => console.log(err))
-  }
-
   useEffect(()=>{
-    fetchProductsInCart()
+    aishaFetch.get('/cart_item/crud/read',{headers:{ cart_id: data.cart_id }})
+    .then( response => {
+      setProducts(response.data.rows )
+    })
+    .catch( err => console.log(err))
   },[data])
 
   return (
@@ -45,22 +44,17 @@ function CartDetails({data}) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>loção hidratante</td>
-                <td>100.00</td>
-                <td>creme</td>
-                <td>2</td>
-                <td>200.00</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>loção hidratante</td>
-                <td>100.00</td>
-                <td>creme</td>
-                <td>2</td>
-                <td>200.00</td>
-              </tr>
+              {
+                products.length > 0 && (
+                  products.map((item,index) => (
+                    <ProductTable 
+                      key={item.cart_item_id +"cart_item" + index}
+                      product={item.product}
+                      qtd_products={item.qtd_products}
+                    />
+                  ))
+                )
+              }
             </tbody>
           </table>
         </div>
