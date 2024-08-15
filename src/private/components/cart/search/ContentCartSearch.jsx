@@ -6,7 +6,7 @@ import './ContentSearch.css'
 import aishaFetch from '../../../axios/config';
 import TableItemCart from './TableItemCart';
 
-function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect, clientSelect }) {
+function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect, clientSelect,setSearchNav }) {
   const [load, setLoad] = useState(false)
   const [payState, setPayState] = useState('pendding')
   
@@ -38,7 +38,6 @@ function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect,
     .catch( err => console.log(err));
     setLoad(false); 
   }
-
 
   return (
     <section className='SearchContent'>
@@ -72,6 +71,7 @@ function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect,
                 key={element.cart_id+'-'+index} 
                 data={element}
                 setCartSelect={setCartSelect}
+                setSearchNav={setSearchNav}
               />)
             )}
           </tbody>

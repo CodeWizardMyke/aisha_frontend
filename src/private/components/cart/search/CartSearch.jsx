@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './CartSearch.css'
 import ContentClientSearch from './ContentClientSearch';
 import ContentCartSearch from './ContentCartSearch';
+import CartDetails from './CartDetails';
 
 function CartSearch() {
   const [ clientSearch, setClientSearch ] = useState([]);
@@ -10,6 +11,8 @@ function CartSearch() {
 
   const [ searchCartClient, setSearchCartClient ] = useState([]);
   const [ cartSelect, setCartSelect ] = useState(null)
+
+  console.log(cartSelect)
 
   const [ searchNav, setSearchNav ] = useState({pClient:true,pCart:false,pShowCart:false});
 
@@ -45,7 +48,8 @@ function CartSearch() {
         </ul>
       </nav>
      { searchNav.pClient && <ContentClientSearch clientSearch={clientSearch} setClientSearch={setClientSearch} setClientSelect={setClientSelect} setSearchNav={setSearchNav} /> }
-     { searchNav.pCart && <ContentCartSearch searchCartClient={searchCartClient} setSearchCartClient={setSearchCartClient} setCartSelect={setCartSelect}  clientSelect={clientSelect}/> }
+     { searchNav.pCart && <ContentCartSearch searchCartClient={searchCartClient} setSearchCartClient={setSearchCartClient} setCartSelect={setCartSelect}  clientSelect={clientSelect} setSearchNav={setSearchNav}/> }
+     { searchNav.pShowCart && <CartDetails cartSelect={cartSelect} /> }
     </div>
   )
 }
