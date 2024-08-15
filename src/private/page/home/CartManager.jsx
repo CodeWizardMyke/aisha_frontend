@@ -8,6 +8,7 @@ import { RiMenuFold4Fill } from "react-icons/ri";
 import AppContext from '../../context/AppContext';
 import CreateCart from '../../components/cart/CreateCart';
 import ReadCart from '../../components/cart/ReadCart';
+import CartSearch from '../../components/cart/search/CartSearch';
 
 function CartManager() {
   const {managerMenu, setManagerMenu} = useContext(AppContext)
@@ -33,7 +34,7 @@ function CartManager() {
         />
 
         { stateButton === 'create' && <CreateCart/>}
-        { stateButton === 'read'   && <ReadCart/>}
+        { stateButton === 'read'   && <CartSearch/>}
 
       </div>
     </div>

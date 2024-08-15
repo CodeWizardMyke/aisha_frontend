@@ -1,0 +1,38 @@
+.SearchContainer{
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+.SearchNavigate{
+  border: 1px solid #ddd;
+  padding: 5px 0;
+}
+
+.SearchNavigate ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.SearchNavigate ul li button{
+  background-color: #A0B3E1;
+  border: 2px solid #A0B3E1;
+  height: 35px;
+  width: 200px;
+  margin: 2px 0;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bolder;
+  color: #fff;
+  transition: all 200ms linear;
+}
+.SearchNavigate ul li button:hover{
+  background-color: #EAB57A;
+}
+
+.navigate__active{
+  background-color: #EAB57A;
+}
+
