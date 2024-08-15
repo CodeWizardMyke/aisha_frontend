@@ -20,7 +20,6 @@ function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect,
 
   function fetchClients (){
     setLoad(true)
-    console.log(clientSelect)
     let headers ={
       page:page,
       size:size,
@@ -28,12 +27,10 @@ function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect,
       state: payState
     }
 
-
     aishaFetch.get('/cart/search/client', { headers : headers })
     .then( response => {
       setCount(response.data.count)
       setSearchCartClient(response.data.rows)
-      console.log(searchCartClient)
     })
     .catch( err => console.log(err));
     setLoad(false); 
@@ -42,7 +39,7 @@ function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect,
   return (
     <section className='SearchContent'>
       <div className="sf_content">
-        <span className='sf_span'>Campo De Busca.</span>
+        <span className='sf_span'>Cliente: {clientSelect.clientName} | instagram: {clientSelect.clientInstagram}</span>
         <form className="sf_group" onSubmit={(e)=> {e.preventDefault(); fetchClients()}}>
           <label htmlFor="state">Estado:</label>
           <select name="state" id="state" onChange={(e) => setPayState(e.target.value)}>

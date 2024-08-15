@@ -12,8 +12,6 @@ function CartSearch() {
   const [ searchCartClient, setSearchCartClient ] = useState([]);
   const [ cartSelect, setCartSelect ] = useState(null)
 
-  console.log(cartSelect)
-
   const [ searchNav, setSearchNav ] = useState({pClient:true,pCart:false,pShowCart:false});
 
   function toggleNavigate(numberPage){
@@ -49,7 +47,7 @@ function CartSearch() {
       </nav>
      { searchNav.pClient && <ContentClientSearch clientSearch={clientSearch} setClientSearch={setClientSearch} setClientSelect={setClientSelect} setSearchNav={setSearchNav} /> }
      { searchNav.pCart && <ContentCartSearch searchCartClient={searchCartClient} setSearchCartClient={setSearchCartClient} setCartSelect={setCartSelect}  clientSelect={clientSelect} setSearchNav={setSearchNav}/> }
-     { searchNav.pShowCart && <CartDetails cartSelect={cartSelect} /> }
+     { searchNav.pShowCart && <CartDetails data={cartSelect} /> }
     </div>
   )
 }

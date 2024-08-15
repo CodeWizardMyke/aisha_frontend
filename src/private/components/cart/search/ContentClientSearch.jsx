@@ -32,7 +32,6 @@ function ContentCartSearch({clientSearch,setClientSearch, setClientSelect, setSe
     .then( response => {
       setCount(response.data.count)
       setClientSearch(response.data.rows)
-      console.log(clientSearch)
     })
     .catch( err => console.log(err));
     setLoad(false); 
