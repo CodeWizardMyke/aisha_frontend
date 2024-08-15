@@ -4,19 +4,53 @@ import './CartDetails.css'
 import aishaFetch from '../../../axios/config'
 import ProductTable from './ProductTable'
 
-function CartDetails({data}) {
+function CartDetails({data, setSearchNav, setClientSelect}) {
   const [products, setProducts] = useState([])
+  const [ showPopUp, setShowPopUp ] = useState(false)
+  const [ removeConfirm, setRemoveConfirm ] = useState(false)
 
   useEffect(()=>{
-    aishaFetch.get('/cart_item/crud/read',{headers:{ cart_id: data.cart_id }})
-    .then( response => {
-      setProducts(response.data.rows )
-    })
-    .catch( err => console.log(err))
-  },[data])
+    if(removeConfirm){
+      if(removeConfirm){
+        aishaFetch.delete('/cart/crud/destroy',{headers:{cart_id:data.cart_id}})
+        .then( response  => {
+          setShowPopUp(false)
+          setClientSelect([])
+          setSearchNav({pClient:true,pCart:false,pShowCart:false})
+        })
+        .catch(err => console.log(err))
+        setShowPopUp(false)
+      }
+    }else{
+      aishaFetch.get('/cart_item/crud/read',{headers:{ cart_id: data.cart_id }})
+      .then( response => {
+        setProducts(response.data.rows )
+      })
+      .catch( err => console.log(err))
+    }
+
+  },[data,removeConfirm,setSearchNav, setClientSelect])
+
 
   return (
     <section className='SearchContent'>
+      {
+        showPopUp && (
+          <div className="popup_delete">
+            <span> Tem certeza que deseja deletar o carrinho?</span>
+            <div>
+              <button 
+                className='remove_element'
+                onClick={()=> setRemoveConfirm(true)}
+              >SIM</button>
+              <button 
+                className='close__popup_delete'
+                onClick={()=> setShowPopUp(false)}
+              >NÃO</button>
+            </div>
+          </div>
+        )
+      }
       <h3>Carrinho ID: {data.cart_id}</h3>
       <div className="content_cart_select">
         <div>
@@ -65,7 +99,7 @@ function CartDetails({data}) {
             <span>QTD PARCELAS:</span>
           </div>
           <div className="content_buttons_cartDetails">
-            <button>CANCELAR CARRINHO</button>
+            <button onClick={()=> setShowPopUp(true) } >CANCELAR CARRINHO</button>
             <button>GERAR LINK DO CARRINHO</button>
           </div>
         </div>

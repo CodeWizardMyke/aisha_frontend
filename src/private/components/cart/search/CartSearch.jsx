@@ -47,7 +47,7 @@ function CartSearch() {
       </nav>
      { searchNav.pClient && <ContentClientSearch clientSearch={clientSearch} setClientSearch={setClientSearch} setClientSelect={setClientSelect} setSearchNav={setSearchNav} /> }
      { searchNav.pCart && <ContentCartSearch searchCartClient={searchCartClient} setSearchCartClient={setSearchCartClient} setCartSelect={setCartSelect}  clientSelect={clientSelect} setSearchNav={setSearchNav}/> }
-     { searchNav.pShowCart && <CartDetails data={cartSelect} /> }
+     { searchNav.pShowCart && <CartDetails data={cartSelect} setClientSelect={setClientSelect}  setSearchNav={setSearchNav} /> }
     </div>
   )
 }
