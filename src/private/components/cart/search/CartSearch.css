@@ -33,6 +33,6 @@
 }
 
 .navigate__active{
-  background-color: #EAB57A;
+  background-color: #EAB57A !important;
 }
 

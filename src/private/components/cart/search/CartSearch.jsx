@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from 'react'
 
 import './CartSearch.css'
+import ContentClientSearch from './ContentClientSearch';
 import ContentCartSearch from './ContentCartSearch';
 
 function CartSearch() {
   const [ clientSearch, setClientSearch ] = useState([]);
   const [ clientSelect, setClientSelect ] = useState(null)
 
-  const [ cartSearch, setCartSearch ] = useState([]);
+  const [ searchCartClient, setSearchCartClient ] = useState([]);
   const [ cartSelect, setCartSelect ] = useState(null)
 
-  const [ searchNav, setSearchNav ] = useState({pClient:true,pCart:false,pShorCart:false});
+  const [ searchNav, setSearchNav ] = useState({pClient:true,pCart:false,pShowCart:false});
 
   function toggleNavigate(numberPage){
     if(numberPage === 1){
-      setSearchNav({pClient:true,pCart:false,pShorCart:false})
+      setSearchNav({pClient:true,pCart:false,pShowCart:false})
     }
     if(clientSelect && numberPage === 2 ){
-      setSearchNav({pClient:false,pCart:true,pShorCart:false})
+      setSearchNav({pClient:false,pCart:true,pShowCart:false})
     }
     if(cartSelect && numberPage === 3){
-      setSearchNav({pClient:false,pCart:false,pShorCart:true})
+      setSearchNav({pClient:false,pCart:false,pShowCart:true})
     }
   };
 
-
   useEffect(()=> {
-    console.log(clientSelect)
+    setSearchCartClient([])
   },[clientSelect])
 
   return (
@@ -34,17 +34,18 @@ function CartSearch() {
       <nav className='SearchNavigate'>
         <ul>
           <li>
-            <button onClick={ ()=> toggleNavigate(1)  }>Buscar Cliente</button>
+            <button onClick={()=> toggleNavigate(1)} className={searchNav.pClient ? 'navigate__active' : ''} >Buscar Cliente</button>
           </li>
           <li>
-            <button onClick={ ()=> toggleNavigate(2) }>Selecionar Carrinho</button>
+            <button onClick={()=> toggleNavigate(2)} className={searchNav.pCart ? 'navigate__active' : ''} >Selecionar Carrinho</button>
           </li>
           <li>
-            <button onClick={ ()=> toggleNavigate(3) }>Detalhes do carrinho</button>
+            <button onClick={()=> toggleNavigate(3)} className={searchNav.pShowCart ? 'navigate__active' : ''} >Detalhes do carrinho</button>
           </li>
         </ul>
       </nav>
-     { searchNav.pClient && <ContentCartSearch clientSearch={clientSearch} setClientSearch={setClientSearch} setClientSelect={setClientSelect} /> }
+     { searchNav.pClient && <ContentClientSearch clientSearch={clientSearch} setClientSearch={setClientSearch} setClientSelect={setClientSelect} setSearchNav={setSearchNav} /> }
+     { searchNav.pCart && <ContentCartSearch searchCartClient={searchCartClient} setSearchCartClient={setSearchCartClient} setCartSelect={setCartSelect}  clientSelect={clientSelect}/> }
     </div>
   )
 }

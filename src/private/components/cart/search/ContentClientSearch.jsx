@@ -4,11 +4,12 @@ import { MdOutlineContentPasteSearch } from "react-icons/md";
 import Loading from '../../loading/Loading';
 import './ContentSearch.css'
 import aishaFetch from '../../../axios/config';
-import TableItemCart from './TableItemCart';
+import ItemTable from './TableClient';
 
-function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect, clientSelect }) {
+
+function ContentCartSearch({clientSearch,setClientSearch, setClientSelect, setSearchNav }) {
   const [load, setLoad] = useState(false)
-  const [payState, setPayState] = useState('pendding')
+  const [clientInstagram, setClientInstagram] = useState(null)
   
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(1);
@@ -20,36 +21,30 @@ function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect,
 
   function fetchClients (){
     setLoad(true)
-    console.log(clientSelect)
+    let url = `/client/search/${clientInstagram ? 'instagram' : ''}`
     let headers ={
       page:page,
       size:size,
-      client_id: clientSelect.client_id,
-      state: payState
+      instagram:clientInstagram,
     }
 
-
-    aishaFetch.get('/cart/search/client', { headers : headers })
+    aishaFetch.get(url, {headers: headers})
     .then( response => {
       setCount(response.data.count)
-      setSearchCartClient(response.data.rows)
-      console.log(searchCartClient)
+      setClientSearch(response.data.rows)
+      console.log(clientSearch)
     })
     .catch( err => console.log(err));
     setLoad(false); 
   }
-
 
   return (
     <section className='SearchContent'>
       <div className="sf_content">
         <span className='sf_span'>Campo De Busca.</span>
         <form className="sf_group" onSubmit={(e)=> {e.preventDefault(); fetchClients()}}>
-          <label htmlFor="state">Estado:</label>
-          <select name="state" id="state" onChange={(e) => setPayState(e.target.value)}>
-            <option value="pendding">PAGAMENTO PENDENTE</option>
-            <option value="appproved">PAGAMENTO APROVADO</option>
-          </select>
+          <label htmlFor="clientInstagram">Instagram:</label>
+          <input type="text" name="clientInstagram" id="clientInstagram" onChange={e => setClientInstagram(e.target.value)} />
           <button><MdOutlineContentPasteSearch/></button>
         </form>
       </div>
@@ -59,19 +54,20 @@ function ContentCartSearch({searchCartClient,setSearchCartClient, setCartSelect,
           <thead>
             <tr>
               <th>Id:</th>
-              <th>Qtd Item</th>
-              <th>Preço:</th>
-              <th>Pagamento:</th>
-              <th>Entrega:</th>
+              <th>Nome completo:</th>
+              <th>Instagram:</th>
+              <th>Telefone:</th>
+              <th>CPF:</th>
             </tr>
           </thead>
           <tbody>
-            {searchCartClient.length > 0 && (
-              searchCartClient.map((element,index) => 
-              <TableItemCart
-                key={element.cart_id+'-'+index} 
+            {clientSearch.length > 0 && (
+              clientSearch.map((element,index) => 
+              <ItemTable
+                key={element.client_id+'-'+index} 
                 data={element}
-                setCartSelect={setCartSelect}
+                setClientSelect={setClientSelect}
+                setSearchNav={setSearchNav}
               />)
             )}
           </tbody>
