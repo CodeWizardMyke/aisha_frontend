@@ -1,0 +1,231 @@
+:root{
+  --wm-border-default: #E1E1E1;
+  --wm-secundary: #E1E1E1;
+  --wm-bt-primary: #686868; 
+  --wm-bt-primary-text:#fff;
+  --mw-bt-primary-hover:#ffa17c;
+  --mw-bt-primary-active:#ffa17c;
+  --mw-bg-default: #fff;
+  --mw-bg-inputs: #E1E1E1;
+  --mw-border-inputs:#A0B3E1 ;
+  --wm-text-color-inputs:#686868;
+  --wm-table-btn-tx-color: #686868;
+  --wm-table-btn-bg-color: #ffffff;
+  --wm-table-btn-bg-hover: #A0B3E1;
+  --mw-table-bg-thead: #E1E1E1;
+  --mw-table-bg-nth-even:#bdbdbd;
+  --mw-table-bg-nth-odd:#e6e6e6;
+}
+
+@keyframes mw_loading {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.mw_loading{
+  animation: mw_loading 2s linear infinite;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+}
+
+.wm-content{
+  height: 100%;
+}
+
+.wm-nav{
+  border: 1px solid  var(--wm-border-default);
+  padding: 5px 0;
+}
+.wm-nav ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.wm-nav ul li button{
+  background-color: var(--wm-bt-primary);
+  border: 2px solid transparent;
+  height: 35px;
+  width: 200px;
+  margin: 2px 0;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bolder;
+  color: var(--wm-bt-primary-text);
+  transition: all 200ms linear;
+}
+.wm-nav ul li button:hover{
+  background-color: var(--mw-bt-primary-hover);
+  color: #686868;
+}
+.nav-active{
+  background-color: var(--mw-bt-primary-active) !important;
+}
+
+.wm{
+  min-height: 645px;
+  margin-left: 25px;
+  margin-top: 25px;
+  border: 1px solid var(--wm-border-default);
+  padding: 5px;
+  background-color:var(--mw-bg-default);
+}
+
+.wmh,.wmb{
+  border: 1px solid var(--wm-border-default);
+  padding: 10px;
+}
+
+.wmb,.wmh{
+  margin-top: 25px;
+  padding: 15px;
+  position: relative;
+}
+.wmb-title,.wmh-title{
+  position: absolute;
+  top: -10px;
+  left: 0;
+  background-color: var(--mw-bg-default);
+}
+
+/*AJUSTA TODA A LINHA DE ITEMS A ESQUERDA*/
+.w_left{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.wmh label{
+  margin-right: 15px;
+}
+.wmh input{
+  height: 25px;
+  padding-left: 15px;
+  border-radius: 5px 0 0 5px;
+  background-color: var(--mw-bg-inputs);
+  border: 1px solid transparent;
+  outline: none;
+  transition: all 200ms;
+  color: var(--wm-text-color-inputs);
+}
+
+.wmh input:focus{
+  border: 1px solid var(--mw-border-inputs);
+}
+/*PADRONIZA BUTTONS SEARCH*/
+.wmh-search{
+  width: 25px; height: 25px;
+  display: flex;
+  align-items: center;justify-content: center;
+  background-color: var(--mw-bg-inputs);
+  border: transparent 1px solid;
+  border-left: #ffff 1px solid;
+  cursor: pointer;
+  transition: all 200ms;
+  color: var(--wm-text-color-inputs);
+}
+.wmh-search:hover{
+  color: var(--mw-border-inputs);
+  border-bottom-color: var(--mw-border-inputs) ;
+}
+.wmh-search svg{
+  width: 20px;
+  height: 20px;
+}
+.wmh-search svg:active{
+  height: 19px;
+  width: 19px;
+}
+
+/*PADRAO css Para o Corpo de tableas e sections dentro de WMB*/
+.wmb section{
+  height: 440px;
+  border: 1px solid var(--wm-border-default);
+  overflow: scroll;
+}
+
+.wmb table{
+  width: 100%;
+  text-align: center;
+}
+.wmb table thead{
+  background-color: var(--mw-table-bg-thead);
+}
+
+.wmb tbody tr{
+  height: 30px;
+  width: 100%;
+  user-select: none;
+}
+.wmb tbody tr:hover{
+  color: #686868;
+}
+.wmb tbody tr:nth-child(odd){
+  background-color:var(--mw-table-bg-nth-odd);
+}
+.wmb tbody tr:nth-child(even){
+  background-color:var(--mw-table-bg-nth-even);
+}
+
+.wmb table button {
+  background-color: var(--wm-table-btn-bg-color);
+  height: 25px;
+  width: 100px;
+  text-align: center;
+  color: var(--wm-table-btn-tx-color);
+  margin: 1px;
+  border: 1px solid var(--mw-border-inputs);
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 0 5px;
+  margin: 0 auto;
+}
+.wmb table button svg{
+  height: 25px;
+  margin-left: 5px;
+  width: 25px;
+  text-align: end;
+}
+.wmb table button:hover {
+  background-color: var(--wm-table-btn-bg-hover);
+}
+.wmb table button:focus{
+  color: #fff;
+  font-size: 9pt;
+}
+.wm-pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  padding: 5px;
+}
+.wm-pagination button{
+  height: 25px;
+  width: 100px;
+  border: 1px solid transparent;
+  background-color: var(--mw-bg-inputs);
+  cursor: pointer;
+  transition: all 200ms;
+}
+.wm-pagination button:hover{
+  border: 1px solid var(--mw-border-inputs);
+}
+.wm-bt-next{
+  margin-left: 5px;
+  border-radius: 0 5px 5px 0;
+}
+.wm-bn-prev{
+  border-radius: 5px 0 0 5px;
+}

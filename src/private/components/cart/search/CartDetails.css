@@ -10,6 +10,7 @@
 .infoValueBasic{
   display: flex;
   justify-content: space-between;
+  margin-bottom: 15px;
 }
 .info-left{
   display: flex;

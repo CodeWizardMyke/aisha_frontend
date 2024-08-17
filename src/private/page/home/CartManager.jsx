@@ -6,9 +6,8 @@ import { MdOutlineDoubleArrow } from "react-icons/md";
 import { RiMenuFold4Fill } from "react-icons/ri";
 
 import AppContext from '../../context/AppContext';
-import CreateCart from '../../components/cart/CreateCart';
-import ReadCart from '../../components/cart/ReadCart';
 import CartSearch from '../../components/cart/search/CartSearch';
+import CartCreateHome from '../../components/cart/create/CartCreateHome';
 
 function CartManager() {
   const {managerMenu, setManagerMenu} = useContext(AppContext)
@@ -33,7 +32,7 @@ function CartManager() {
           onClick={()=>{ setManagerMenu(!managerMenu)}}
         />
 
-        { stateButton === 'create' && <CreateCart/>}
+        { stateButton === 'create' && <CartCreateHome/>}
         { stateButton === 'read'   && <CartSearch/>}
 
       </div>
