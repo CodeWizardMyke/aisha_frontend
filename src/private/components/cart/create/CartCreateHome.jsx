@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchProducts from './SearchProducts'
 
 import '../../css/DefaultComponents.css'
+import ShowMoreProduct from './ShowMoreProduct';
 
 function CartCreateHome() {
-  const [products, setProducts] = useState([]);
+  const [ navPage, setNavPage ] = useState('')
+  const [ products, setProducts ] = useState([]);
+  const [ prod, setProd ] = useState(null);
 
   return (
     <section className='wm-content'>
@@ -21,7 +24,8 @@ function CartCreateHome() {
           </li>
         </ul>
       </nav>
-      <SearchProducts products={products}  setProducts={setProducts} />
+      { navPage === '' && < SearchProducts products={products} setProducts={setProducts} setNavPage={setNavPage} setProd={setProd} /> }
+      { navPage === 'sp' && < ShowMoreProduct prod={prod} /> }
     </section>
   )
 }

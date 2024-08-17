@@ -1,0 +1,53 @@
+.wsp-box{
+  position: relative;
+  margin: 15px;
+  border: var(--wm-border-default) 1px solid; 
+  min-height: 100px;
+  padding: 15px 5px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.wsp-box .wsp-box-title{
+  position: absolute;
+  top: -10px;
+  background-color: #fff;
+  padding: 0 5px;
+}
+
+.wm-span-group{
+  font-size: 1.1rem;
+  border: 2px solid var(--wm-border-default);
+  min-width: 200px;
+  text-align: center;
+  margin-top: 5px;
+}
+.wm-span-group span{
+  margin-right: 15px;
+}
+
+.w-100{
+  width: 100%;
+}
+.mh-100{
+  min-height: 100px;
+  text-align: start;
+  padding: 5px;
+  text-justify: auto;
+}
+.wm-thumbnail{
+  height: 200px;
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+}
+.w-thumbnail-content{
+  width: 175px;
+  background-color: #fff;
+  margin: 5px;
+  border: 1px solid var(--wm-border-default);
+}
+.w-thumbnail-content img{
+  width: 100%;
+}

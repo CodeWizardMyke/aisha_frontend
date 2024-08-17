@@ -5,7 +5,7 @@ import { TbCopyPlusFilled } from "react-icons/tb";
 import aishaFetch from '../../../axios/config';
 import Pagination from '../../pagination/Pagination';
 
-function SearchProducts({products, setProducts}) {
+function SearchProducts({products, setProducts, setProd, setNavPage}) {
   const [ query, setQuery ] = useState('');
   const [ load, setLoad ] = useState(false);
   const [ size, setSize ] = useState(10);
@@ -24,13 +24,17 @@ function SearchProducts({products, setProducts}) {
       }
     })
     .then( (response) => {
-      console.log(response)
       setProducts(response.data.rows)
       setCount(response.data.count)
     })
     .catch( error => console.log(error));
     setLoad(false);
   };
+
+  function handdlerShowMoreProd (product) {
+    setProd(product);
+    setNavPage('sp');
+  }
 
   return (
     <div className='wm'>
@@ -70,7 +74,9 @@ function SearchProducts({products, setProducts}) {
                       <td>{data.NET_HEIGHT}</td>
                       <td>{data.stock}</td>
                       <td>
-                        <button>Mostrar <TbCopyPlusFilled/></button>
+                        <button
+                          onClick={() => handdlerShowMoreProd(data) }
+                        >Mostrar <TbCopyPlusFilled/></button>
                       </td>
                     </tr>
                   ))
