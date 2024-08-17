@@ -31,23 +31,50 @@
   width: 100%;
 }
 .mh-100{
-  min-height: 100px;
+  height: 80px;
+  overflow-y: auto;
   text-align: start;
   padding: 5px;
   text-justify: auto;
 }
 .wm-thumbnail{
-  height: 200px;
+  height: 175px;
   width: 100%;
   display: flex;
   overflow-x: auto;
 }
 .w-thumbnail-content{
-  width: 175px;
+  width: 145px;
   background-color: #fff;
   margin: 5px;
   border: 1px solid var(--wm-border-default);
 }
 .w-thumbnail-content img{
   width: 100%;
+}
+
+.prevBTN{
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  top: 0;
+}
+.prevBTN button{
+  display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 25px;
+   width: 75px;
+   color: #ddd;
+   background-color: green;
+   border: none;
+   cursor: pointer;
+   border-radius: 5px;
+}
+.prevBTN button svg{
+  margin-left: 5px
+}
+.prevBTN button:hover{
+  background-color: rgb(7, 138, 7);
+  color: #fff;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import SearchProducts from './SearchProducts'
 
 import '../../css/DefaultComponents.css'
@@ -14,7 +14,7 @@ function CartCreateHome() {
        <nav className='wm-nav'>
         <ul>
           <li>
-            <button>Buscar Produtos</button>
+            <button onClick={() => setNavPage('') } >Buscar Produtos</button>
           </li>
           <li>
             <button>Mostrar Carrinho</button>
@@ -25,7 +25,7 @@ function CartCreateHome() {
         </ul>
       </nav>
       { navPage === '' && < SearchProducts products={products} setProducts={setProducts} setNavPage={setNavPage} setProd={setProd} /> }
-      { navPage === 'sp' && < ShowMoreProduct prod={prod} /> }
+      { navPage === 'sp' && < ShowMoreProduct prod={prod}  setNavPage={setNavPage} /> }
     </section>
   )
 }

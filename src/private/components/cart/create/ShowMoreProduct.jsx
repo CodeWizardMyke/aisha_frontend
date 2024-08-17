@@ -1,13 +1,17 @@
 import React from 'react'
 import './ShowMoreProduct.css'
+import { TbPlayerTrackPrevFilled } from "react-icons/tb";
 import aishaFetch from '../../../axios/config'
 
-function ShowMoreProduct({prod}) {
+function ShowMoreProduct({prod,setNavPage}) {
   const urlAPI = aishaFetch.defaults.baseURL;
   const urlImages =urlAPI.split('/api')[0]
 
   return (
     <div className='wm'>
+      <div className="prevBTN">
+        <button onClick={() => setNavPage('') } >Voltar <TbPlayerTrackPrevFilled/> </button>
+      </div>
       <div className="wsp-box">
         <span className="wsp-box-title">INFORMAÇÕES BÁSICAS.</span>
         <div className="wm-span-group">

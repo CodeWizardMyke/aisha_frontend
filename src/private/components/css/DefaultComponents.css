@@ -72,6 +72,7 @@
 }
 
 .wm{
+  position: relative;
   min-height: 645px;
   margin-left: 25px;
   margin-top: 25px;
