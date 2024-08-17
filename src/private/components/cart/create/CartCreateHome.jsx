@@ -21,7 +21,7 @@ function CartCreateHome() {
           </li>
         </ul>
       </nav>
-      <SearchProducts setProducts={setProducts} />
+      <SearchProducts products={products}  setProducts={setProducts} />
     </section>
   )
 }

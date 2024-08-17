@@ -2,20 +2,35 @@ import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { FiLoader } from "react-icons/fi";
 import { TbCopyPlusFilled } from "react-icons/tb";
+import aishaFetch from '../../../axios/config';
+import Pagination from '../../pagination/Pagination';
 
-function SearchProducts() {
-  const [query, setQuery] = useState('');
+function SearchProducts({products, setProducts}) {
+  const [ query, setQuery ] = useState('');
   const [ load, setLoad ] = useState(false);
+  const [ size, setSize ] = useState(10);
+  const [ page, setPage] = useState(1);
+  const [ count, setCount] = useState(1);
 
   function handdlerSubmitForm (event){
-    event.preventDefault();
-    setLoad(true)
+    event.preventDefault() 
+    setLoad(true);
 
-  
-    setTimeout(()=>{
-      setLoad(false)
-    },2000)
-  }
+    aishaFetch.get(`/product/${query ? 'search/title' : 'crud/read'}`,{
+      headers:{
+        page:page,
+        size:size,
+        title:query
+      }
+    })
+    .then( (response) => {
+      console.log(response)
+      setProducts(response.data.rows)
+      setCount(response.data.count)
+    })
+    .catch( error => console.log(error));
+    setLoad(false);
+  };
 
   return (
     <div className='wm'>
@@ -35,79 +50,36 @@ function SearchProducts() {
             <thead>
               <tr>
                 <th>ID:</th>
-                <th>TITULO:</th>
+                <th className='wf-200'>TITULO:</th>
                 <th>MARCA:</th>
                 <th>PREÇO:</th>
                 <th>PESO:</th>
-                <th>QTD ESTOQUE:</th>
+                <th>QTD:</th>
                 <th>DETALHES:</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Loção Hidratante</td>
-                <td>CeraVe</td>
-                <td>R$: 78,89</td>
-                <td>473 Ml</td>
-                <td>25</td>
-                <td>
-                  <button>Mostrar <TbCopyPlusFilled/></button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Loção Hidratante</td>
-                <td>CeraVe</td>
-                <td>R$: 78,89</td>
-                <td>473 Ml</td>
-                <td>25</td>
-                <td>
-                  <button>Mostrar <TbCopyPlusFilled/></button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Loção Hidratante</td>
-                <td>CeraVe</td>
-                <td>R$: 78,89</td>
-                <td>473 Ml</td>
-                <td>25</td>
-                <td>
-                  <button>Mostrar <TbCopyPlusFilled/></button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Loção Hidratante</td>
-                <td>CeraVe</td>
-                <td>R$: 78,89</td>
-                <td>473 Ml</td>
-                <td>25</td>
-                <td>
-                  <button>Mostrar <TbCopyPlusFilled/></button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Loção Hidratante</td>
-                <td>CeraVe</td>
-                <td>R$: 78,89</td>
-                <td>473 Ml</td>
-                <td>25</td>
-                <td>
-                  <button>Mostrar <TbCopyPlusFilled/></button>
-                </td>
-              </tr>
-              
+              {
+                products.length > 0 && (
+                  products.map((data, index) => (
+                    <tr key={`ProductSearchCart_${index}`} >
+                      <td>{data.product_id}</td>
+                      <td>{data.title.slice(0,20)}</td>
+                      <td>{data.brand}</td>
+                      <td>R$: {data.price}</td>
+                      <td>{data.NET_HEIGHT}</td>
+                      <td>{data.stock}</td>
+                      <td>
+                        <button>Mostrar <TbCopyPlusFilled/></button>
+                      </td>
+                    </tr>
+                  ))
+                )
+              }
             </tbody>
           </table>
-
         </section>
-        <div className='wm-pagination'>
-            <button type="button" className='wm-bn-prev'>Anterior</button>
-            <button type="button" className='wm-bt-next'>Próximo</button>
-        </div>
+        <Pagination setSize={setSize} setPage={setPage} count={count} size={size}  page={page}/>
       </div>
     </div>
   )
