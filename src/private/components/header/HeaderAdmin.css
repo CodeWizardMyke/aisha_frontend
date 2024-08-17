@@ -1,0 +1,44 @@
+.adm-header{
+  background-color: var(--header-admin-bg-color);
+  box-shadow: 0 0px 15px #ddd;
+  padding: 10PX;
+}
+
+.logo-adm{
+  font-size: 1.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+  color: #707070;
+  transition: all 200ms ease-in-out;
+}
+.logo-adm a{
+  text-decoration: none;
+  color: #707070;
+}
+.logo-adm a:hover{
+  color: #535353;
+}
+.logo-adm span{
+  margin-left: 5px;
+}
+.adm-tools{
+  min-height: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: end;
+  font-size: 1.6rem;
+}
+
+.adm-tools svg{
+  margin: auto 10px ;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+.adm-tools svg:hover{
+  transform: scale(1.05);
+}

@@ -1,0 +1,137 @@
+.window__box{
+  position: absolute;
+  top: 0; right: 0;
+  height: 100%; min-height: 730px;
+  width: 100%; min-width: 500px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  overflow: auto;
+}
+.window_header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+}
+.window_title{
+  margin-left: 10px;
+}
+.window_tools{
+  display: flex;
+  padding:  10px;
+  align-items: center;
+  justify-content: center;
+}
+.window_tools button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  height: 25px;
+  width: 75px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #f85959;
+  transition: all 200ms;
+}
+.window_tools button svg{
+  margin-left: 5px;
+  font-size: 1rem;
+}
+.window_tools .window_close{
+  color:#fff;
+}
+.window_tools .window_close:hover{
+  background-color: #ff3636;
+}
+.window__body{
+  padding: 10px;
+  overflow-y: scroll;
+  height: 450px;
+  margin-top: 10px;
+  background-color: #fff;
+}
+
+.window_footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 250px;
+}
+.add_user_cart{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 10px;
+}
+.add_user_cart input{
+  width: 300px;
+}
+
+.submit_cart_client button{
+  height: 35px;
+  width: 140px;
+  border:  1px solid #ddd;
+  border-radius: 5px;
+  background-color: rgb(61, 99, 214);
+  color: #fff;
+  cursor: pointer;
+  transition: all 200ms;
+}
+
+.submit_cart_client button:hover{
+  background-color: rgb(80, 113, 212);
+}
+
+.cart_resume{
+  display: flex;
+  align-items: end;
+  padding: 0 10px;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  margin: 2px;
+  justify-content: space-between;
+}
+.cart_resume span{
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 10px 5px;
+}
+.msg_return{
+  border-top: 1px solid black;
+  padding: 10px 0;
+}
+.msg_return .form-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+.msg_return .form-group input{
+  width: 300px;
+  margin-left: 15px;
+}
+.copy{
+  margin-left: 15px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #8a8a8a;
+  transition: all 200ms ;
+  user-select: none;
+}
+.copy:hover{
+  color: #555555;
+}
+.add__position_relative{
+  position: relative;
+}
+.msg_copy{
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+}

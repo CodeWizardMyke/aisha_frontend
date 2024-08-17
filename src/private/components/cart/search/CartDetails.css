@@ -1,0 +1,106 @@
+
+.content_cart_select{
+  padding: 5px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 600px;
+}
+.infoValueBasic{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.info-left{
+  display: flex;
+  flex-direction: column;
+}
+.info-rigth{
+  align-items: end;
+  display: flex;
+  flex-direction: column;
+}
+
+.items_in_cart {
+  border: 1px solid #dddd;
+  max-height: 300px;
+  width: 100%;
+  text-align: center;
+}
+.items_in_cart thead{
+  background-color: #ddd;
+}
+
+.items_in_cart tbody tr{
+  height: 25px ;
+}
+.items_in_cart tbody tr:nth-child(even){
+  background-color: #ddd;
+}
+
+.last_inf_cart{
+  display: flex;
+  flex-direction: column;
+}
+.content_buttons_cartDetails{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.content_buttons_cartDetails button{
+  height: 35px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  margin-left: 5px;
+  border-radius: 10px;
+}
+
+.content_buttons_cartDetails button:hover{
+  background-color: #EAB57A;
+}
+
+.popup_delete{
+  height: 100px;
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: absolute;
+  background-color: #fff;
+  top: 40%;
+  left: 40%;
+}
+.popup_delete div{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px 15px;
+  align-items: center;
+}
+.popup_delete button{
+  height: 25px;
+  width: 75px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.remove_element{
+  background-color: #f85959;
+}
+.remove_element:hover{
+  background-color: #ff3636;
+  color: #fff;
+}
+.close__popup_delete{
+  background-color: #A0B3E1;
+}
+.close__popup_delete:hover{
+  background-color: #87a2e2;
+  color: #fff;
+}

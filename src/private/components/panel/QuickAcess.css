@@ -1,0 +1,52 @@
+.QuickAcess{
+  background-color: aliceblue;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  margin: 5px;
+}
+
+.btn_active_menu{
+  position: absolute;
+  display: flex;
+  left: 0px;
+  top: 350px; 
+  cursor: pointer;
+  font-size: 2rem;
+  transition: all 300ms ease;
+  opacity: 0.3;
+}
+.btn_active_menu:hover{
+  color: #F88B68;
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+
+.QuickAcessList{
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.btn-lg{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+  height: 55px;
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  line-height: 1.3333333;
+  border-radius: 6px;
+  color: #767676;
+  transition: all 200ms ease-in;;
+  border: 1px solid #767676;
+}
+.btn-lg:hover{
+  color: #fff;
+  background-color: #F88B68;
+  border-color: #F88B68;
+}
