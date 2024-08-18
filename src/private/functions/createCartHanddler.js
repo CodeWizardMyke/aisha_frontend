@@ -1,18 +1,16 @@
 
-function  createCartHanddler (products, setProducts ,item, qtdSelect) {
-  let cart = [];
-
-  products.map(data => {
-    if(data.product_id === item.product_id && data.stock >= qtdSelect){
-      data.stock = data.stock - qtdSelect;
-      data.qtd_products = qtdSelect;
-      cart.push(data)
+function  createCartHanddler (products, prodCart, productSelect, qtdSelect, setProdCart,setProducts ) {
+  productSelect.qtd_products = Number(qtdSelect);
+  
+  for( const data of products){
+    if(data.product_id === productSelect.product_id && data.stock >= Number(qtdSelect)){
+      data.stock = data.stock - Number(qtdSelect);
     }
-  })
+  }
+
+  setProdCart([...prodCart, productSelect]);
 
   setProducts(products)
-
-  return {cart:cart,}
-}
+};
 
 export default createCartHanddler;

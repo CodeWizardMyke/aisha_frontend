@@ -46,9 +46,7 @@ function SearchProducts({products, setProducts, setProd, setNavPage, prodCart, s
   }
 
   function handdlerSetProdCart (){
-    const {cart} = createCartHanddler( products, setProducts ,productSelect, qtdSelect);
-    setProdCart(cart);
-    console.log(cart)
+    createCartHanddler(products, prodCart, productSelect, qtdSelect, setProdCart,setProducts)
   }
 
   return (
@@ -68,7 +66,8 @@ function SearchProducts({products, setProducts, setProd, setNavPage, prodCart, s
             type="number"
             id="qtd_products" 
             className='w-75' 
-            min={1} 
+            min={1}
+            required
             max={ productSelect ? productSelect.stock : 1 }
             onChange={(e) => setQtdSelect(e.target.value)}
             onInvalid={(e) => {
@@ -84,7 +83,8 @@ function SearchProducts({products, setProducts, setProd, setNavPage, prodCart, s
           />
           <button type='submit'>Adicionar<FaCartPlus/></button>
         </form>
-        <form className='w_left' onSubmit={(e) => handdlerSubmitForm(e) }>
+        <form className='w_left wmh-prod_select' onSubmit={(e) => handdlerSubmitForm(e) }>
+          <span className='wmh-prod_select-title'>Campo de Busca</span>
           <label htmlFor="title">Título: </label>
           <input 
             type="text" 
@@ -138,7 +138,7 @@ function SearchProducts({products, setProducts, setProd, setNavPage, prodCart, s
             </tbody>
           </table>
         </section>
-        <Pagination setSize={setSize} setPage={setPage} count={count} size={size}  page={page}/>
+        <Pagination setSize={setSize} setPage={setPage} count={count} size={size}  page={page} setNavPage={setNavPage} setProd={setProd}/>
       </div>
     </div>
   )

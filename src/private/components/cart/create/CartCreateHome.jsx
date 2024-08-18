@@ -3,6 +3,7 @@ import SearchProducts from './SearchProducts'
 
 import '../../css/DefaultComponents.css'
 import ShowMoreProduct from './ShowMoreProduct';
+import CartShowProducts from './CartShowProducts';
 
 function CartCreateHome() {
   const [ navPage, setNavPage ] = useState('')
@@ -38,13 +39,31 @@ function CartCreateHome() {
         < SearchProducts 
           products={products} 
           setProducts={setProducts} 
-          setNavPage={setNavPage} 
+          setNavPage={setNavPage}
           setProd={setProd}
           prodCart={prodCart}
           setProdCart={setProdCart}
         /> 
       )}
-      { navPage === 'sp' && < ShowMoreProduct prod={prod}  setNavPage={setNavPage} /> }
+      { 
+        navPage === 'sp' && (
+          < ShowMoreProduct 
+            prod={prod}  
+            setNavPage={setNavPage} 
+          />)
+      }
+      { 
+        navPage === 'sc' &&  
+        (
+          < CartShowProducts 
+            setNavPage={setNavPage}
+            setProd={setProd}
+            prodCart={prodCart}
+            setProdCart={setProdCart}
+            products={products} 
+            setProducts={setProducts} 
+          />) 
+      }
     </section>
   )
 }
