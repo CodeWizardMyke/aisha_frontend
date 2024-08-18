@@ -1,10 +1,10 @@
 :root{
   --wm-border-default: #E1E1E1;
   --wm-secundary: #E1E1E1;
-  --wm-bt-primary: #686868; 
-  --wm-bt-primary-text:#fff;
-  --mw-bt-primary-hover:#ffa17c;
-  --mw-bt-primary-active:#ffa17c;
+  --wm-bt-primary: #4A90E2; 
+  --wm-bt-primary-text:#ffff;
+  --mw-bt-primary-hover:#357ABD;
+  --mw-bt-primary-active:#357ABD;
   --mw-bg-default: #fff;
   --mw-bg-inputs: #E1E1E1;
   --mw-border-inputs:#A0B3E1 ;
@@ -15,6 +15,7 @@
   --mw-table-bg-thead: #E1E1E1;
   --mw-table-bg-nth-even:#bdbdbd;
   --mw-table-bg-nth-odd:#e6e6e6;
+  --mw-add-primary-gren: #6BBF59;
 }
 
 @keyframes mw_loading {
@@ -65,10 +66,9 @@
 }
 .wm-nav ul li button:hover{
   background-color: var(--mw-bt-primary-hover);
-  color: #686868;
 }
 .nav-active{
-  background-color: var(--mw-bt-primary-active) !important;
+  border-bottom-color: #2C2C2C  !important;
 }
 
 .wm{
@@ -104,6 +104,52 @@
   justify-content: end;
   align-items: center;
 }
+.w-75{
+  width: 75px !important;
+}
+.wmh-prod_select{
+  position: relative;
+  border: 1px solid var(--wm-border-default);
+  min-height: 50px;
+  min-width: 300px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wmh-prod_select-title{
+  position: absolute;
+  top: -14px;
+  right: 0;
+}
+
+.wmh-prod_select button{
+  cursor: pointer;
+  height: 25px;
+  border: none;
+  padding: 0 5px;
+  margin-left: 1px;
+  background-color: var(--mw-bg-inputs  );
+  color: #2C2C2C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wmh-prod_select button:hover{
+  background-color: #6BBF59;
+  color: #ffff;
+}
+.wmh-prod_select button svg{
+  height: 18px;
+  width: 18px;
+}
+
+.wmh{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
 .wmh label{
   margin-right: 15px;
 }
@@ -118,9 +164,6 @@
   color: var(--wm-text-color-inputs);
 }
 
-.wmh input:focus{
-  border: 1px solid var(--mw-border-inputs);
-}
 /*PADRONIZA BUTTONS SEARCH*/
 .wmh-search{
   width: 25px; height: 25px;
@@ -195,9 +238,9 @@
   margin: 0 auto;
 }
 .wmb table button svg{
-  height: 25px;
+  height: 20px;
+  width: 20px;
   margin-left: 5px;
-  width: 25px;
   text-align: end;
 }
 .wmb table button:hover {

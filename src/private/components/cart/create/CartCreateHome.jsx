@@ -7,6 +7,7 @@ import ShowMoreProduct from './ShowMoreProduct';
 function CartCreateHome() {
   const [ navPage, setNavPage ] = useState('')
   const [ products, setProducts ] = useState([]);
+  const [ prodCart, setProdCart ] = useState([]);
   const [ prod, setProd ] = useState(null);
 
   return (
@@ -14,17 +15,35 @@ function CartCreateHome() {
        <nav className='wm-nav'>
         <ul>
           <li>
-            <button onClick={() => setNavPage('') } >Buscar Produtos</button>
+            <button 
+              onClick={() => setNavPage('') }
+              className={navPage === '' ? 'nav-active' : ''}
+              >Buscar Produtos</button>
           </li>
           <li>
-            <button>Mostrar Carrinho</button>
+            <button
+              onClick={() => setNavPage('sc')}
+              className={navPage === 'sc' ? 'nav-active' : ''}
+            >Mostrar Carrinho</button>
           </li>
           <li>
-            <button>Buscar Cliente</button>
+            <button
+             onClick={() => setNavPage('fc')}
+             className={navPage === 'fc' ? 'nav-active' : ''}
+            >Buscar Cliente</button>
           </li>
         </ul>
       </nav>
-      { navPage === '' && < SearchProducts products={products} setProducts={setProducts} setNavPage={setNavPage} setProd={setProd} /> }
+      { navPage === '' && (
+        < SearchProducts 
+          products={products} 
+          setProducts={setProducts} 
+          setNavPage={setNavPage} 
+          setProd={setProd}
+          prodCart={prodCart}
+          setProdCart={setProdCart}
+        /> 
+      )}
       { navPage === 'sp' && < ShowMoreProduct prod={prod}  setNavPage={setNavPage} /> }
     </section>
   )
