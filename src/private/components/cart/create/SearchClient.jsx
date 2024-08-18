@@ -4,6 +4,7 @@ import { TbCopyPlusFilled } from "react-icons/tb";
 
 import './SearchClient.css'
 import Pagination from '../../pagination/Pagination';
+import aishaFetch from '../../../axios/config';
 
 function SearchClient() {
   const [clients, setClients] = useState([]);
@@ -14,15 +15,33 @@ function SearchClient() {
   const [ creatClientName, setCreateClientName ] = useState('');
   const [ creatClientInstagram, setCreateClientInstagram ] = useState('');
   const [ searchClientInstagram, setClientInstagram ] = useState('');
-  const [msg_cart, set_msg_cart ] = useState(false)
+  const [ msg_cart, set_msg_cart ] = useState(false)
+  const [ clientSelect, setClientSelect ] = useState(null);
 
 
   function createClient () {
-
+    console.log(creatClientInstagram)
+    console.log(creatClientName)
+    if(creatClientInstagram && creatClientName){
+      aishaFetch.post('/client/crud/create',{clientInstagram:creatClientInstagram,clientName:creatClientName})
+      .then(response => {
+        set_msg_cart(true);
+        console.log(response)
+        setTimeout(() => { set_msg_cart(false); }, 3000);
+      })
+      .catch(error => console.log(error))
+    }
   };
 
   function searchClient () {
+    let url = searchClientInstagram ? '/client/search/instagram' : '/client/crud/read'
 
+    aishaFetch.get(url,{headers:{instagram:searchClientInstagram}})
+    .then(response => {
+      setClients(response.data.rows);
+      setCount(response.data.count);
+    })
+    .catch(error => console.log(error))
   };
 
   return (
@@ -75,7 +94,6 @@ function SearchClient() {
               type="text" 
               name="clientInstagram" 
               id="clientInstagram"
-              required
               onChange={(e) => setClientInstagram(e.target.value)}
             />
             <button className='wmh-search'><CiSearch/></button>
@@ -105,7 +123,7 @@ function SearchClient() {
                       <td>{data.clientInstagram.slice(0,20)}</td>
                       <td>{data.telephone}</td>
                       <td>
-                        <button><TbCopyPlusFilled/></button>
+                        <button>carrinho<TbCopyPlusFilled/></button>
                       </td>
                     </tr>
                   ))
