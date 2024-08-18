@@ -20,6 +20,7 @@ function SearchProducts({products, setProducts, setProd, setNavPage, prodCart, s
 
   const [qtdSelect, setQtdSelect] = useState(1);
   const [productSelect, setProductSelect] = useState(null)
+  const [msg_cart, setMsg_cart] = useState(false)
 
   function handdlerSubmitForm (event){
     event.preventDefault() 
@@ -46,7 +47,14 @@ function SearchProducts({products, setProducts, setProd, setNavPage, prodCart, s
   }
 
   function handdlerSetProdCart (){
-    createCartHanddler(products, prodCart, productSelect, qtdSelect, setProdCart,setProducts)
+    if(productSelect){
+      createCartHanddler(products, prodCart, productSelect, qtdSelect, setProdCart,setProducts)
+    }else{
+      setMsg_cart(true)
+      setTimeout(()=>{
+        setMsg_cart(false)
+      },3000)
+    }
   }
 
   return (
@@ -60,6 +68,7 @@ function SearchProducts({products, setProducts, setProd, setNavPage, prodCart, s
             handdlerSetProdCart(e)
           }}
         >
+          {msg_cart && <span className='msg-error'>Faça uma busca por um produto, selecione, depois adicione ao carrinho!</span>}
           <span className='wmh-prod_select-title'>ID Produto: { productSelect ? productSelect.product_id : 'não selecionado'}</span>
           <label htmlFor="qtd_products">Quantidade:</label>
           <input 

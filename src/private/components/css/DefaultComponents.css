@@ -293,3 +293,24 @@
   width: 55px;
   border-radius: 5px;
 }
+
+.wmh-resume{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.msg-error{
+  position: absolute;
+  z-index: 100;
+  top: ;left: 0%;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  min-width: 220px;
+  text-align: center;
+  border: 1px solid #2C2C2C;
+}
