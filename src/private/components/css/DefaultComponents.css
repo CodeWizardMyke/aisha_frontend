@@ -15,7 +15,8 @@
   --mw-table-bg-thead: #E1E1E1;
   --mw-table-bg-nth-even:#bdbdbd;
   --mw-table-bg-nth-odd:#e6e6e6;
-  --mw-add-primary-gren: #6BBF59;
+  --mw-add-green: #558B44;
+  --mw-add-green-hover: #6BBF59;
 }
 
 @keyframes mw_loading {

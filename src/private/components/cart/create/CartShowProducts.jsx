@@ -17,8 +17,6 @@ function CartShowProducts({prodCart,setProdCart,products,setProducts, setProd, s
 
     setAmountCart(price);
     set_qtd_items(qtd)
-    console.log(amountCart)
-    console.log(qtd_items)
   },[prodCart,qtd_items,amountCart])
 
   return (

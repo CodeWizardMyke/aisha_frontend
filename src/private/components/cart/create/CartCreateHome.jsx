@@ -4,6 +4,7 @@ import SearchProducts from './SearchProducts'
 import '../../css/DefaultComponents.css'
 import ShowMoreProduct from './ShowMoreProduct';
 import CartShowProducts from './CartShowProducts';
+import SearchClient from './SearchClient';
 
 function CartCreateHome() {
   const [ navPage, setNavPage ] = useState('')
@@ -56,6 +57,18 @@ function CartCreateHome() {
         navPage === 'sc' &&  
         (
           < CartShowProducts 
+            setNavPage={setNavPage}
+            setProd={setProd}
+            prodCart={prodCart}
+            setProdCart={setProdCart}
+            products={products} 
+            setProducts={setProducts} 
+          />) 
+      }
+      { 
+        navPage === 'fc' &&  
+        (
+          < SearchClient 
             setNavPage={setNavPage}
             setProd={setProd}
             prodCart={prodCart}

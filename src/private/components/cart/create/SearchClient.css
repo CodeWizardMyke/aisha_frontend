@@ -1,0 +1,70 @@
+.wmh-client{
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border: 1px solid var(--wm-border-default);
+}
+
+.w-400{
+  width: 100%;
+  max-width: 500px;
+}
+.w-200{
+  width: 100%;
+  max-width: 300px;
+}
+
+.wmh-box-title{
+  position: absolute;
+  top: -20px;
+  right: 0;
+  background-color: #ffff;
+}
+
+.wmh-box{
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  border: 1px solid var( --wm-border-default);
+  padding: 10px 5px;
+}
+
+.wmh-box input{
+  height: 25px;
+  width: 120px;
+  margin-left: 5px;
+  border-radius: 5px;
+  padding-left: 5px ;
+  border: 2px solid transparent;
+  background-color: var(--mw-bg-inputs);
+}
+.wmh-box input:focus{
+  outline: none;
+  border: 2px solid var(--mw-border-inputs);
+}
+
+.bt{
+  height: 25px;
+  width: 100px;
+  border: 1px solid var(--wm-border-default);
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.bt-add{
+  background-color: var(--mw-add-green);
+  color: #ffff;
+  transition: all 200ms;
+}
+.bt-add:hover{
+  background-color: var(--mw-add-green-hover);
+}
+.wmh-box-search{
+  display: flex;
+}
