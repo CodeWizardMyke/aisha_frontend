@@ -6,7 +6,7 @@ import './SearchClient.css'
 import Pagination from '../../pagination/Pagination';
 import aishaFetch from '../../../axios/config';
 
-function SearchClient() {
+function SearchClient({setNavPage,setClientSelect }) {
   const [clients, setClients] = useState([]);
   const [size, setSize]= useState(10);
   const [page, setPage] = useState(1);
@@ -15,13 +15,10 @@ function SearchClient() {
   const [ creatClientName, setCreateClientName ] = useState('');
   const [ creatClientInstagram, setCreateClientInstagram ] = useState('');
   const [ searchClientInstagram, setClientInstagram ] = useState('');
-  const [ msg_cart, set_msg_cart ] = useState(false)
-  const [ clientSelect, setClientSelect ] = useState(null);
+  const [ msg_cart, set_msg_cart ] = useState(false);
 
 
   function createClient () {
-    console.log(creatClientInstagram)
-    console.log(creatClientName)
     if(creatClientInstagram && creatClientName){
       aishaFetch.post('/client/crud/create',{clientInstagram:creatClientInstagram,clientName:creatClientName})
       .then(response => {
@@ -43,6 +40,11 @@ function SearchClient() {
     })
     .catch(error => console.log(error))
   };
+
+  function handdlerClientSelect(data){
+    setClientSelect(data);
+    setNavPage('create_cart')
+  }
 
   return (
     <div className='wm'>
@@ -123,7 +125,9 @@ function SearchClient() {
                       <td>{data.clientInstagram.slice(0,20)}</td>
                       <td>{data.telephone}</td>
                       <td>
-                        <button>carrinho<TbCopyPlusFilled/></button>
+                        <button 
+                          onClick={() => {handdlerClientSelect(data)}}
+                        >carrinho<TbCopyPlusFilled/></button>
                       </td>
                     </tr>
                   ))

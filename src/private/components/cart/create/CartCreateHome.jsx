@@ -5,12 +5,14 @@ import '../../css/DefaultComponents.css'
 import ShowMoreProduct from './ShowMoreProduct';
 import CartShowProducts from './CartShowProducts';
 import SearchClient from './SearchClient';
+import CreateCartFinish from './CreateCartFinish';
 
 function CartCreateHome() {
   const [ navPage, setNavPage ] = useState('')
   const [ products, setProducts ] = useState([]);
   const [ prodCart, setProdCart ] = useState([]);
   const [ prod, setProd ] = useState(null);
+  const [ clientSelect, setClientSelect ] = useState(null);
 
   return (
     <section className='wm-content'>
@@ -70,12 +72,14 @@ function CartCreateHome() {
         (
           < SearchClient 
             setNavPage={setNavPage}
-            setProd={setProd}
-            prodCart={prodCart}
-            setProdCart={setProdCart}
-            products={products} 
-            setProducts={setProducts} 
+            setClientSelect={setClientSelect}
           />) 
+      }
+      { 
+        navPage === 'create_cart' &&  
+        (
+          <CreateCartFinish clientSelect={clientSelect} prodCart={prodCart} />
+        ) 
       }
     </section>
   )
