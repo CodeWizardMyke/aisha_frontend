@@ -1,0 +1,30 @@
+@keyframes popupAni {
+  0%{
+    display: block;
+    right: 0;
+  }
+  33%{
+    right: 50;
+  }
+  66%{
+    right: 100px;
+  }
+  90%{
+    right: 50px;
+  }
+  100%{
+    right: 0px;
+    display: none;
+  }
+}
+
+.wrapper-popup{
+  padding:25px;
+  border: 2px solid black;
+  position: absolute;
+  background-color: #fff;
+  right: 0;
+  z-index: 100;
+  width: 120px;
+  animation: popupAni 5s linear forwards  1;
+}

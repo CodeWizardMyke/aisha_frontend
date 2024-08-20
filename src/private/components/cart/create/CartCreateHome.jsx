@@ -83,6 +83,8 @@ function CartCreateHome() {
             prodCart={prodCart} 
             setNavPage={setNavPage}
             setProd={setProd}
+            setClientSelect={setClientSelect}
+            setProdCart={setProdCart}
           />
         ) 
       }
