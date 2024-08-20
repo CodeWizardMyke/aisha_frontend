@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { TbCopyPlusFilled } from "react-icons/tb";
+import { FaTrashAlt } from "react-icons/fa";
 
 function CartShowProducts({prodCart,setProdCart,products,setProducts, setProd, setNavPage}) {
   const [ amountCart, setAmountCart ]= useState(0);
@@ -18,6 +19,25 @@ function CartShowProducts({prodCart,setProdCart,products,setProducts, setProd, s
     setAmountCart(price);
     set_qtd_items(qtd)
   },[prodCart,qtd_items,amountCart])
+
+  function handdlerRemoveItemCart(data, index) {
+    if (products.length > 0) {
+      const updatedProducts = products.map(product => {
+        if (product.product_id === data.product_id) {
+          return {
+            ...product,
+            stock: product.stock + data.qtd_products
+          };
+        }
+        return product;
+      });
+      setProducts(updatedProducts);
+    }
+  
+    const updatedCart = [...prodCart];
+    updatedCart.splice(index, 1);
+    setProdCart(updatedCart);
+  }
 
   return (
     <div className="wm">
@@ -52,7 +72,7 @@ function CartShowProducts({prodCart,setProdCart,products,setProducts, setProd, s
                 <th>PREÇO:</th>
                 <th>UND:</th>
                 <th>CATEGORIA</th>
-                <th>DETALHES:</th>
+                <th>Mostrar | Remover:</th>
               </tr>
             </thead>
             <tbody>
@@ -66,10 +86,9 @@ function CartShowProducts({prodCart,setProdCart,products,setProducts, setProd, s
                       <td>R$: {data.price}</td>
                       <td>{data.qtd_products}</td>
                       <td>{data.category}</td>
-                      <td>
-                        <button
-                          onClick={() => handdlerShowMoreProd(data) }
-                        >Mostrar <TbCopyPlusFilled/></button>
+                      <td className='td-dflex-row'>
+                        <div className='bt-icon bt-icon-primary' onClick={() => handdlerShowMoreProd(data) }><TbCopyPlusFilled/></div>
+                        <div className='bt-icon bt-icon-remove' onClick={() => handdlerRemoveItemCart(data,index) }><FaTrashAlt/></div>
                       </td>
                     </tr>
                   ))

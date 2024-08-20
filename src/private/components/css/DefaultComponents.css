@@ -398,3 +398,31 @@
   display: flex;
   justify-content: start;
 }
+.td-dflex-row{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+  align-items: center;
+}
+.bt-icon{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.bt-icon svg{
+  height: 20px;
+  width: 20px;
+}
+
+.bt-icon-primary{
+  color: #686868;
+}
+.bt-icon-primary:hover{
+  color: #4A90E2;
+}
+.bt-icon-remove{
+  color: #686868;
+}
+.bt-icon-remove:hover{
+  color: #F45F5F;
+}
