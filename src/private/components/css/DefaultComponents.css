@@ -315,3 +315,86 @@
   text-align: center;
   border: 1px solid #2C2C2C;
 }
+.wmh-span-resume{
+  padding: 10px 5px;
+}
+.wmh-span-resume span:not(:last-child){
+  margin-right:25px ;
+  font-size: 1.1rem;
+}
+.wmh-box-colum{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.content-flex{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.wmb-bx-content{
+  border: 1px solid var(--wm-border-default);
+  margin-left: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.wmb-bx{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--wm-border-default);
+  padding: 15px 10px;
+  min-height: 175px;
+  position: relative;
+  margin: 10px 0;
+}
+.wmb-bx-title{
+  position: absolute;
+  top: -16px;
+  right: 0;
+}
+
+.flex-colum{
+  display: flex;
+  flex-direction: column; 
+  align-items: start;
+  justify-content: space-between;
+  height: 100%;
+}
+.wmh-content-bt{
+  margin-bottom: 15px;
+}
+.wmh-content-bt button{
+  margin-right: 15px;
+}
+
+.bt-cancel{
+  background-color: #F45F5F;
+  color: #ffff;
+}
+.bt-cancel:hover{
+  background-color: #f04242;
+}
+
+.bt-approved{
+  background-color: var(--mw-add-green);
+  color: #ffff;
+}
+.bt-approved:hover{
+  background-color: var(--mw-add-green-hover);
+}
+.bt-coppy{
+  height: 25px;
+  width: 75px;
+  border: 1px solid transparent;
+  border-left-color: #ffff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.cart_create_res{
+  display: flex;
+  justify-content: start;
+}

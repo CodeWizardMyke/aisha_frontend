@@ -78,7 +78,12 @@ function CartCreateHome() {
       { 
         navPage === 'create_cart' &&  
         (
-          <CreateCartFinish clientSelect={clientSelect} prodCart={prodCart} />
+          < CreateCartFinish 
+            clientSelect={clientSelect}
+            prodCart={prodCart} 
+            setNavPage={setNavPage}
+            setProd={setProd}
+          />
         ) 
       }
     </section>
