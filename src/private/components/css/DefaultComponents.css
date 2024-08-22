@@ -72,32 +72,10 @@
   border-bottom-color: #2C2C2C  !important;
 }
 
-.wm{
-  position: relative;
-  min-height: 645px;
-  margin-left: 25px;
-  margin-top: 25px;
-  border: 1px solid var(--wm-border-default);
-  padding: 5px;
-  background-color:var(--mw-bg-default);
-}
 
-.wmh,.wmb{
-  border: 1px solid var(--wm-border-default);
-  padding: 10px;
-}
 
-.wmb,.wmh{
-  margin-top: 25px;
-  padding: 15px;
-  position: relative;
-}
-.wmb-title,.wmh-title{
-  position: absolute;
-  top: -10px;
-  left: 0;
-  background-color: var(--mw-bg-default);
-}
+
+
 
 /*AJUSTA TODA A LINHA DE ITEMS A ESQUERDA*/
 .w_left{
