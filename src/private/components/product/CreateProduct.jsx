@@ -20,16 +20,19 @@ function CreateProduct() {
 
   const handleSubmit =  async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      setLoading(true);
       updateErrorsSpan();
-      const formData = new FormData(document.getElementById('formPostProd'));
+      const formData = new FormData(e.target);
+      console.log(e.target)
   
       const response = await aishaFetch.post('/product/crud/create',formData,{headers:{'Content-Type':'multipart/form-data'}});
+      console.log(response)
       setLoading(false)
       //createdFeedback();
 
     } catch (error) {
+      console.log(error)
       setLoading(false);
       const {data} = error.response ?  error.response : { data:undefined };
       if(data){ handdlerErrorsPost(data) };
@@ -50,6 +53,9 @@ function CreateProduct() {
 
   function resetForm(e) {
     e.preventDefault();
+    setPrice('');
+    setPromotions('');
+    setSelectedImage(null);
     e.target.closest('form').reset();
   }
 
@@ -92,12 +98,8 @@ function CreateProduct() {
 
   return (
     <div className='wm'>
+
         {loading && <Loading/>}
-        <div className='wmh'>
-          <div className="align-end">
-            <span className="mwh-title">Cadastro de um novo produto</span>
-          </div>
-        </div>
         <form
           className='wmb content-sides'
           onSubmit={handleSubmit}
@@ -190,8 +192,8 @@ function CreateProduct() {
               <div className="form-group w-15">
               <label htmlFor="price">Preço:</label>
               <div className='overlay'>
-                <input type="text" id="price" className='overlay-hide' onChange={ handdlerPricing } />
-                <input type="text" name="price" className='align-end' readOnly  defaultValue={price} />
+                <input type="text" id="price"  name="price" className='overlay-hide' onChange={ handdlerPricing } />
+                <input type="text"className='align-end' readOnly  defaultValue={price} />
               </div>
                 <div className="error errors-price"></div>
               </div>
@@ -199,8 +201,8 @@ function CreateProduct() {
               <div className="form-group w-15">
                 <label htmlFor="promotions">Descontos: %</label>
                 <div className="overlay">
-                  <input type="number" id="promotions" className='overlay-hide' onChange={handdleSetPromotions} />
-                  <input type="text" name="promotions" className='align-center' readOnly defaultValue={promotions} />
+                  <input type="number" id="promotions" name="promotions" className='overlay-hide' onChange={handdleSetPromotions} />
+                  <input type="text" className='align-center' readOnly defaultValue={promotions} />
                 </div>
                 <div className="error errors-promotions"></div>
               </div>
@@ -227,15 +229,18 @@ function CreateProduct() {
               <button type='button' className='bt bt-file'>
                 <label htmlFor="thumbnails">Enviar Imagem</label>
               </button>
-              <input type="file" name="thumbnails" id="thumbnails" onChange={handleImageChange} />
-              <div className="error errors-thumbnails"></div>
+              <div className='content-input-file'>
+                <input type="file" name="thumbnails" id="thumbnails" onChange={handleImageChange} />
+                <div className="error errors-thumbnails"></div>
+              </div>
+
               <div className="wrapper-images">
                   <span className="wrapper-images-title">Imagens Selecionadas:</span>
                   {selectedImage ?(
                     <div className="images">
                       <img src={selectedImage} alt="Imagem selecionada" />
                     </div>
-                  ) : "Nenhuma imagem selecionada!"}
+                  ) : ""}
               </div>
             </div>
           

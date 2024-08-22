@@ -31,6 +31,9 @@
   --foccus: #4CAF50;
 }
 
+.error{
+  color: var(--txt-errror);
+}
 .align-end{
   text-align: end;
   width: 100%;
@@ -125,6 +128,7 @@
 .form-group{
   margin-bottom: 15px;
   min-height: 85px;
+  position: relative;
   padding: 5px;
 }
 .form-group label {
@@ -160,8 +164,12 @@
 
 .form-group .error{
   color: var(--txt-errror);
-  font-size: 1rem;
-  font-weight: 600;
+  background-color: #e3e3e3;
+  position: absolute;
+  left: 0;
+  z-index: 100;
+  min-width: 140px;
+  text-align: center;
 }
 
 .form-checkbox{
@@ -201,6 +209,13 @@
 .bt-file:hover{background-color: var(--mw-add-green-hover);}
 .bt-file label{ cursor: pointer ;}
 .custom-input-file input[type='file']{ display: none;}
+.content-input-file{
+  min-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .wrapper-images{
   position: relative;
   height: 200px;
