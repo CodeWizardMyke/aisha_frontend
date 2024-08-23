@@ -235,12 +235,12 @@ function CreateProduct() {
               </div>
 
               <div className="wrapper-images">
-                  <span className="wrapper-images-title">Imagens Selecionadas:</span>
+                  <span className="wrapper-images-title">Imagem do Produto:</span>
                   {selectedImage ?(
                     <div className="images">
                       <img src={selectedImage} alt="Imagem selecionada" />
                     </div>
-                  ) : ""}
+                  ) : "Nenuhma imagem Selecionada!"}
               </div>
             </div>
           
