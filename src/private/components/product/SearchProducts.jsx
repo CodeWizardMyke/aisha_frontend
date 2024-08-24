@@ -19,7 +19,11 @@ function ReadProduct() {
           </li>
           <li>
             <button
-              onClick={() => setNavPage('showProduct')}
+              onClick={() => {
+                if(prodShow){
+                  setNavPage('showProduct')
+                }
+              }}
               className={navPage === 'showProduct' ? 'nav-active' : ''}
             >Mostrar Produto</button>
           </li>
@@ -36,7 +40,7 @@ function ReadProduct() {
         )
       }
       {
-        ( navPage === "showProduct" && prodShow ) &&  (
+        navPage === "showProduct"  &&  (
           < ShowProduct 
               data={prodShow} 
               setNavPage={setNavPage} 
