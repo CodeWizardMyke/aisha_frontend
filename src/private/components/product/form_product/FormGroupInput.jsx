@@ -22,12 +22,7 @@ function FormGroupInput({inputConfig, cssConfig}) {
         )
       }
       {
-        type === 'number' || type ==='text' && (
-          <input type={type} name={name} id={name} />
-        )
-      }
-      {
-        type === 'date' && (
+        type !== 'select' && (
           <input type={type} name={name} id={name} />
         )
       }

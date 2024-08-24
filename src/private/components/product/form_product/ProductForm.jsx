@@ -3,7 +3,6 @@ import FormGroupInput from './FormGroupInput';
 import objectConfig from '../../../configs/formConfigInputs';
 
 function ProductForm({ sendForm, dataErr }) {
-  const [ errors, setErrors] = useState([]);
 
   const [ currency, setCurrency] = useState('BRL')
   const [ price, setPrice ] = useState('')
@@ -57,14 +56,9 @@ function ProductForm({ sendForm, dataErr }) {
 
   useEffect( () => {
     if(dataErr){
-      handdlerErrors();
+      dataErr.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg );
     };
   }, [dataErr])
-
-  function handdlerErrors(){
-    setErrors(dataErr.errors);
-    dataErr.errors.map( (e) => document.querySelector(`.errors-${e.path}`).innerHTML = e.msg );
-  };
   
   return (
     <form 
