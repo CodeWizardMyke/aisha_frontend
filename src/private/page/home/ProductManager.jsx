@@ -7,8 +7,8 @@ import './ProductManager.css'
 import AppContext from '../../context/AppContext';
 
 import CreateProduct from '../../components/product/CreateProduct';
-import ReadProduduct from '../../components/product/ReadProduduct';
 import verifyAuthUser from '../../utils/verifyAuthUser';
+import SearchProducts from '../../components/product/SearchProducts';
 
 function ProductManager() {
   const navigate = useNavigate()
@@ -41,7 +41,7 @@ function ProductManager() {
         />
 
         { stateButton === 'create' && <CreateProduct/>}
-        { stateButton === 'read'   && <ReadProduduct/>}
+        { stateButton === 'read'   && <SearchProducts/>}
 
       </div>
     </div>

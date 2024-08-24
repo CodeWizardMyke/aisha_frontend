@@ -34,10 +34,12 @@ function CreateProduct() {
     setErrors([])
    };
  
-
   return (
     <section className='wm-content'>
       {loading && <Loading/>}
+      <div className="wm-header align-center">
+        <h3>Cadastro de novo produto</h3>
+      </div>
       <div className='wm'>
         <ProductForm sendForm={sendForm} dataErr={dataErr} />
       </div>

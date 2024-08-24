@@ -41,6 +41,10 @@
 .wm-content{
   height: 100%;
 }
+.wm-header{
+  border: 1px solid var(--wm-border-default);
+  padding: 5px 0px;
+}
 
 .wm-nav{
   border: 1px solid  var(--wm-border-default);
@@ -71,11 +75,6 @@
 .nav-active{
   border-bottom-color: #2C2C2C  !important;
 }
-
-
-
-
-
 
 /*AJUSTA TODA A LINHA DE ITEMS A ESQUERDA*/
 .w_left{

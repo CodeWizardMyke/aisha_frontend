@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import SearchProducts from './SearchProducts'
 
-import '../../css/DefaultComponents.css'
 import ShowMoreProduct from './ShowMoreProduct';
 import CartShowProducts from './CartShowProducts';
 import SearchClient from './SearchClient';

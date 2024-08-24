@@ -9,9 +9,9 @@ import ManagerHome from './private/page/home/Home';
 import ProductManager from './private/page/home/ProductManager';
 import EmployeeManager from './private/page/home/EmployeeManager';
 import CartManager from './private/page/home/CartManager';
-import './private/components/css/DefaultComponents.css'
-import './private/components/css/IndexComponent.css'
 
+import './private/components/css/IndexComponent.css'
+import './private/components/css/tablePaginate.css'
 
 const router = createBrowserRouter([
   {

@@ -1,8 +1,10 @@
 import React from 'react'
 
-function FormGroupInput({inputConfig, cssConfig}) {
+function FormGroupInput({inputConfig, cssConfig, oldData}) {
   const {type, name, txtValue} = inputConfig;
   const { formGroup, error} = cssConfig;
+
+  const placeholderValue = oldData && oldData[name] ? oldData[name] :"Valor não preenchido";
 
   return (
     <div className={ formGroup ? "form-group " + formGroup : 'form-group'}>
@@ -23,7 +25,7 @@ function FormGroupInput({inputConfig, cssConfig}) {
       }
       {
         type !== 'select' && (
-          <input type={type} name={name} id={name} />
+          <input type={type} name={name} id={name} placeholder={ placeholderValue } />
         )
       }
       <div className={error ? `error errors-${name} ${error}` : `error errors-${name}`}></div>

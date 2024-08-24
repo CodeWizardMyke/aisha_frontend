@@ -1,3 +1,12 @@
+@keyframes mw_loading {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
 :root{
   /*COLORS Text Defaults*/
   --txt-errror: #df3079;
@@ -42,6 +51,12 @@
 
 .align-center{
   text-align: center;
+  width: 100%;
+}
+.d-flex-end{
+  display: flex;
+  align-items: center;
+  justify-content: end;
   width: 100%;
 }
 
@@ -100,6 +115,98 @@
 .bt-primary:hover{
   background-color: var(--mw-bt-primary-hover);
 }
+
+.wm-header{
+  border: 1px solid var(--wm-border-default);
+  padding: 5px 0px;
+}
+
+.mw_loading{
+  animation: mw_loading 2s linear infinite;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+}
+
+.wm-content{
+  height: 100%;
+}
+.wm-nav ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.wm-nav ul li button{
+  background-color: var(--wm-bt-primary);
+  border: 2px solid transparent;
+  height: 35px;
+  width: 200px;
+  margin: 2px 0;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bolder;
+  color: var(--wm-bt-primary-text);
+  transition: all 200ms linear;
+}
+.wm-nav ul li button:hover{
+  background-color: var(--mw-bt-primary-hover);
+}
+.nav-active{
+  border-bottom-color: #2C2C2C  !important;
+}
+
+/*remove */
+/*AJUSTA TODA A LINHA DE ITEMS A ESQUERDA*/
+.w_left{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.w-75{
+  width: 75px !important;
+}
+.wmh-prod_select{
+  position: relative;
+  border: 1px solid var(--wm-border-default);
+  min-height: 50px;
+  min-width: 300px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wmh-prod_select-title{
+  position: absolute;
+  top: -14px;
+  right: 0;
+}
+
+.wmh-prod_select button{
+  cursor: pointer;
+  height: 25px;
+  border: none;
+  padding: 0 5px;
+  margin-left: 1px;
+  background-color: var(--mw-bg-inputs  );
+  color: #2C2C2C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wmh-prod_select button:hover{
+  background-color: #6BBF59;
+  color: #ffff;
+}
+.wmh-prod_select button svg{
+  height: 18px;
+  width: 18px;
+}
+/*finish remove this*/
 
 .wm{
   position: relative;
@@ -292,8 +399,6 @@
   z-index: 100;
   opacity: 0;
 }
-
-
 
 .custom-select {
   display: block;
